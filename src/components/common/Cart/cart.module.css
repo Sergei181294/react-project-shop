@@ -1,0 +1,28 @@
+.cartWrapper {
+       position: relative;
+}
+
+.icon {
+       width: 150px;
+       height: 150px;
+}
+
+.name {
+       margin: 0;
+       max-width: 100px;
+       position: absolute;
+       left: 5px;
+       bottom: 25px;
+       color: white;
+       font-size: 18px;
+}
+
+.price {
+       margin: 0 ;
+       width: 100px;
+       position: absolute;
+       left: 5px;
+       bottom: 5px;
+       color: white;
+       font-size: 18px;
+}

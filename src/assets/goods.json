@@ -1,0 +1,63 @@
+
+[
+       {
+         "id": 0,
+         "imageUrl": "https://source.unsplash.com/random",
+         "title": "Книга топ",
+         "price": "80 руб."
+       },
+       {
+         "id": 1,
+         "imageUrl": "https://source.unsplash.com/random",
+         "title": "Книга топ",
+         "price": "80 руб."
+       },
+       {
+         "id": 2,
+         "imageUrl": "https://source.unsplash.com/random",
+         "title": "Книга топ",
+         "price": "80 руб."
+       },
+       {
+         "id": 3,
+         "imageUrl": "https://source.unsplash.com/random",
+         "title": "Книга топ",
+         "price": "80 руб."
+       },
+       {
+         "id": 4,
+         "imageUrl": "https://source.unsplash.com/random",
+         "title": "Книга топ",
+         "price": "80 руб."
+       },
+       {
+         "id": 5,
+         "imageUrl": "https://source.unsplash.com/random",
+         "title": "Книга топ",
+         "price": "80 руб."
+       },
+       {
+         "id": 6,
+         "imageUrl": "https://source.unsplash.com/random",
+         "title": "Книга топ",
+         "price": "80 руб."
+       },
+       {
+         "id": 7,
+         "imageUrl": "https://source.unsplash.com/random",
+         "title": "Книга топ",
+         "price": "80 руб."
+       },
+       {
+         "id": 8,
+         "imageUrl": "https://source.unsplash.com/random",
+         "title": "Книга топ",
+         "price": "80 руб."
+       },
+       {
+         "id": 9,
+         "imageUrl": "https://source.unsplash.com/random",
+         "title": "Книга топ",
+         "price": "80 руб."
+       }
+     ]
