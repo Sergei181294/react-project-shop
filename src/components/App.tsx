@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import { Header, Main } from "./common"
+import { Header, Main, Footer } from "./common"
 
 
 import css from "./app.module.css"
@@ -19,6 +19,7 @@ export const App = () => {
             <Route path="*" element={<NotFound />} /> */}
           </Routes>
         </div>
+        <Footer />
       </div>
 
     </>

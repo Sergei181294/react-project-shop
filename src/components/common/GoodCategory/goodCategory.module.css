@@ -11,7 +11,6 @@
        font-weight: 600;
 }
 
-
 .title:hover {
        text-decoration: underline;
 }
@@ -20,6 +19,6 @@
        list-style: none;
        display: flex;
        flex-wrap: wrap;
-       column-gap: 129px;
-       row-gap: 40px;
+       column-gap: 155px;
+       row-gap: 40px;     
 }
