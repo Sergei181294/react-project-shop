@@ -1,0 +1,17 @@
+[
+       {
+              "id": "0",
+              "type": "books",
+              "label": "Книги"
+       },
+       {
+              "id": "1",
+              "type": "souvenirs",
+              "label": "Сувениры"
+       },
+       {
+              "id": "2",
+              "type": "products",
+              "label": "Продукты"
+       }
+]

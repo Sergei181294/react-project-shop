@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import { Header, Main, Footer } from "./common"
+import { Header, Main, Footer } from "."
 
 
 import css from "./app.module.css"
