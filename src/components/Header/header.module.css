@@ -1,6 +1,7 @@
 
 .headerWrapper {
        display: flex;
+       /* justify-content: space-between; */
 }
 
 .searchAuthAndBasketBlock {

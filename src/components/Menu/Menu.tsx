@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 import { Carousel, Button } from 'antd';
 import css from "./menu.module.css"
-import img1 from "../../../assets/images/img1.jpg"
-import img2 from "../../../assets/images/img2.jpg"
+import img1 from "../../assets/images/img1.jpg"
+import img2 from "../../assets/images/img2.jpg"
 
 const menuList = ["Сувениры", "Книги", "Техника"]
 
