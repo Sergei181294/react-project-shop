@@ -1,0 +1,24 @@
+.categoriesLink {
+       text-decoration: none;
+}
+
+.title {
+       text-align: center;
+       margin-top: 20px;
+       background-color: #e5e0e0;
+       color: black;
+       font-size: 18px;
+       font-weight: 600;
+}
+
+.title:hover {
+       text-decoration: underline;
+}
+
+.list {
+       list-style: none;
+       display: flex;
+       flex-wrap: wrap;
+       column-gap: 155px;
+       row-gap: 40px;     
+}

@@ -1,0 +1,202 @@
+[
+  {
+    "categoryTypeId": "books",
+    "description": "Книга заебись",
+    "id": "0",
+    "img": "https://source.unsplash.com/random",
+    "label": "Книга",
+    "price": "80 руб."
+  },
+  {
+    "categoryTypeId": "books",
+    "description": "Книга заебись",
+    "id": "0",
+    "img": "https://source.unsplash.com/random",
+    "label": "Книга",
+    "price": "80 руб."
+  },
+  {
+    "categoryTypeId": "books",
+    "description": "Книга заебись",
+    "id": "0",
+    "img": "https://source.unsplash.com/random",
+    "label": "Книга",
+    "price": "80 руб."
+  },
+  {
+    "categoryTypeId": "books",
+    "description": "Книга заебись",
+    "id": "0",
+    "img": "https://source.unsplash.com/random",
+    "label": "Книга",
+    "price": "80 руб."
+  },
+  {
+    "categoryTypeId": "books",
+    "description": "Книга заебись",
+    "id": "0",
+    "img": "https://source.unsplash.com/random",
+    "label": "Книга",
+    "price": "80 руб."
+  },
+  {
+    "categoryTypeId": "books",
+    "description": "Книга заебись",
+    "id": "1",
+    "img": "https://source.unsplash.com/random",
+    "label": "Книга",
+    "price": "80 руб."
+  },
+  {
+    "categoryTypeId": "books",
+    "description": "Книга заебись",
+    "id": "2",
+    "img": "https://source.unsplash.com/random",
+    "label": "Книга",
+    "price": "80 руб."
+  },
+  {
+    "categoryTypeId": "souvenirs",
+    "description": "Сувенир топ",
+    "id": "3",
+    "img": "https://source.unsplash.com/random",
+    "label": "Сувенир",
+    "price": "100 руб."
+  },
+  {
+    "categoryTypeId": "souvenirs",
+    "description": "Сувенир топ",
+    "id": "3",
+    "img": "https://source.unsplash.com/random",
+    "label": "Сувенир",
+    "price": "100 руб."
+  },
+  {
+    "categoryTypeId": "souvenirs",
+    "description": "Сувенир топ",
+    "id": "3",
+    "img": "https://source.unsplash.com/random",
+    "label": "Сувенир",
+    "price": "100 руб."
+  },
+  {
+    "categoryTypeId": "souvenirs",
+    "description": "Сувенир топ",
+    "id": "3",
+    "img": "https://source.unsplash.com/random",
+    "label": "Сувенир",
+    "price": "100 руб."
+  },
+  {
+    "categoryTypeId": "souvenirs",
+    "description": "Сувенир топ",
+    "id": "3",
+    "img": "https://source.unsplash.com/random",
+    "label": "Сувенир",
+    "price": "100 руб."
+  },
+  {
+    "categoryTypeId": "souvenirs",
+    "description": "Сувенир топ",
+    "id": "3",
+    "img": "https://source.unsplash.com/random",
+    "label": "Сувенир",
+    "price": "100 руб."
+  },
+  {
+    "categoryTypeId": "souvenirs",
+    "description": "Сувенир топ",
+    "id": "4",
+    "img": "https://source.unsplash.com/random",
+    "label": "Сувенир",
+    "price": "100 руб."
+  },
+  {
+    "categoryTypeId": "souvenirs",
+    "description": "Сувенир топ",
+    "id": "5",
+    "img": "https://source.unsplash.com/random",
+    "label": "Сувенир",
+    "price": "100 руб."
+  },
+  {
+    "categoryTypeId": "products",
+    "description": "Продукт топ",
+    "id": "6",
+    "img": "https://source.unsplash.com/random",
+    "label": "Продукт",
+    "price": "20 руб."
+  },
+  {
+    "categoryTypeId": "products",
+    "description": "Продукт топ",
+    "id": "6",
+    "img": "https://source.unsplash.com/random",
+    "label": "Продукт",
+    "price": "20 руб."
+  },
+  {
+    "categoryTypeId": "products",
+    "description": "Продукт топ",
+    "id": "6",
+    "img": "https://source.unsplash.com/random",
+    "label": "Продукт",
+    "price": "20 руб."
+  },
+  {
+    "categoryTypeId": "products",
+    "description": "Продукт топ",
+    "id": "6",
+    "img": "https://source.unsplash.com/random",
+    "label": "Продукт",
+    "price": "20 руб."
+  },
+  {
+    "categoryTypeId": "products",
+    "description": "Продукт топ",
+    "id": "6",
+    "img": "https://source.unsplash.com/random",
+    "label": "Продукт",
+    "price": "20 руб."
+  },
+  {
+    "categoryTypeId": "products",
+    "description": "Продукт топ",
+    "id": "6",
+    "img": "https://source.unsplash.com/random",
+    "label": "Продукт",
+    "price": "20 руб."
+  },
+  {
+    "categoryTypeId": "products",
+    "description": "Продукт топ",
+    "id": "6",
+    "img": "https://source.unsplash.com/random",
+    "label": "Продукт",
+    "price": "20 руб."
+  },
+  {
+    "categoryTypeId": "products",
+    "description": "Продукт топ",
+    "id": "7",
+    "img": "https://source.unsplash.com/random",
+    "label": "Продукт",
+    "price": "20 руб."
+  },
+  {
+    "categoryTypeId": "products",
+    "description": "Продукт топ",
+    "id": "8",
+    "img": "https://source.unsplash.com/random",
+    "label": "Продукт",
+    "price": "20 руб."
+  },
+  {
+    "categoryTypeId": "products",
+    "description": "Продукт топ",
+    "id": "9",
+    "img": "https://source.unsplash.com/random",
+    "label": "Продукт",
+    "price": "20 руб."
+  }
+]

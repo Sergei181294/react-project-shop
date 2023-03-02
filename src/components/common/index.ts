@@ -1,0 +1,6 @@
+export { Header } from "./Header"
+export { Menu } from "./Menu"
+export { GoodCategory } from "./GoodCategory"
+export { Main } from "./Main"
+export { Cart } from "./Cart"
+export { Footer } from "./Footer"

@@ -1,0 +1,41 @@
+.cartWrapper {
+       position: relative;
+}
+
+.icon {
+       width: 200px;
+       height: 200px;
+}
+
+.name {
+       margin: 0;
+       max-width: 100px;
+       position: absolute;
+       left: 5px;
+       bottom: 40px;
+       color: rgb(70, 0, 0);
+       font-size: 18px;
+       font-weight: 800;
+}
+
+.description {
+       margin: 0;
+       max-width: 100px;
+       position: absolute;
+       left: 5px;
+       bottom: 25px;
+       color: rgb(70, 0, 0);
+       font-size: 14px;
+       font-weight: 600;
+}
+
+.price {
+       margin: 0 ;
+       width: 100px;
+       position: absolute;
+       left: 5px;
+       bottom: 5px;
+       color: rgb(71, 0, 0);
+       font-size: 18px;
+       font-weight: 600;
+}
