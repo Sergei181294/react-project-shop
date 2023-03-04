@@ -1,3 +1,19 @@
 .footer {
-       background-color: aquamarine;
+       background-color: rgb(211, 211, 211);
+       height: 200px;
+       padding: 20px;
+}
+
+.socialMediaNews {
+       font-size: 14px;
+    color: gray;
+    font-weight: 400;
+}
+
+.networks {
+       list-style: none;
+       display: flex;
+       gap: 20px;
+
+
 }

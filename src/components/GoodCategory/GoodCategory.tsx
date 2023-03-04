@@ -4,7 +4,7 @@ import { Card } from ".."
 import css from "./goodCategory.module.css"
 import goods from "../../assets/goods.json"
 
-interface GoodCategoryProps {
+export interface GoodCategoryProps {
        category: {
               id: string;
               type: string;
@@ -17,7 +17,7 @@ export const GoodCategory: FC<GoodCategoryProps> = ({ category }) => {
        return (
 
               <div>
-                     <Link to="/" className={css.categoriesLink}>
+                     <Link to={`/categories/${category.type}`} className={css.categoriesLink}>
                             <h2 className={css.title}>{category.label}</h2>
                      </Link>
                      <ul className={css.list}>
@@ -26,6 +26,7 @@ export const GoodCategory: FC<GoodCategoryProps> = ({ category }) => {
                                    .map((item) =>
                                           <li key={item.id}>
                                                  <Card
+                                                        id={item.id}
                                                         image={item.img}
                                                         title={item.label}
                                                         description={item.description}

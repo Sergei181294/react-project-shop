@@ -1,7 +1,11 @@
-
 export { Header } from "./Header"
 export { Menu } from "./Menu"
 export { GoodCategory } from "./GoodCategory"
 export { Main } from "./Main"
 export { Card } from "./Card"
 export { Footer } from "./Footer"
+export { Cart } from './Cart'
+export { NotFound } from "./pages/NotFound"
+export { ProductPage } from "./pages/ProductPage"
+export { CategoryPage } from "./pages/CategoryPage"
+export { CarouselSlider } from "./Carousel"

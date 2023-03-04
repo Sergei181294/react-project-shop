@@ -1,12 +1,17 @@
-import { Menu, GoodCategory } from ".."
+import { Menu, GoodCategory, CarouselSlider } from ".."
 import categories from "../../assets/categories.json"
+import css from "./main.module.css"
 
 
 export const Main = () => {
        return (
               <>
-                     <Menu />
-                     {categories.map(category => <GoodCategory key={category.id} category={category}/>)}
+                     <div className={css.menuWrapper}>
+                            <Menu />
+                            <CarouselSlider />
+                     </div>
+
+                     {categories.map(category => <GoodCategory key={category.id} category={category} />)}
               </>
        )
 }

@@ -17,7 +17,7 @@ export const Header = () => {
                             <div className={css.searchAuthAndBasketBlock}>
                                    <Search placeholder="Введите название товара" style={{ width: 800 }} />
                                    <Button className={css.searchButton} >Войти</Button>
-                                   <Link to="/" className={css.basket}>
+                                   <Link to="/api/cart" className={css.basket}>
                                           <p className={css.bas}>Корзина</p>
                                    </Link>
                             </div>

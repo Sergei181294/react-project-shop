@@ -1,0 +1,51 @@
+.goodWrapper {
+       margin-bottom: 30px;
+}
+.productContainer {
+       display: flex;
+       margin-top: 30px;
+
+}
+
+.productContainer .productPicture {
+       width: 380px;
+       height: 460px;
+}
+
+.informationBlock {
+       width: 100%;
+}
+
+.productTitle {
+       margin: 0 0 0 30px;
+       font-size: 42px;
+       font-weight: 400;
+}
+
+.productDescription {
+       margin: 15px 0 0 30px;
+       font-size: 24px;
+       font-weight: 400;
+}
+
+.productPrice {
+       margin: 0 0 0 30px;
+       font-size: 44px;
+       font-weight: 600;
+}
+
+.btnPutInCart {
+       min-width: 300px;
+       margin: 20px 0 0 30px;
+       height: 50px;
+       background-color: #f37b00;
+       color: white;
+       font-size: 20px;
+       font-weight: 700;
+}
+
+.btnPutInCart:hover {
+       margin-bottom: 10px;
+       background-color: #ff8800;
+       
+}
