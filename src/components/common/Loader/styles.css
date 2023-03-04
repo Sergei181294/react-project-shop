@@ -1,13 +1,14 @@
 .lds-circle {
   display: inline-block;
-  transform: translateZ(1px);
+  position: relative;
+  left:50%;
 }
 
 .lds-circle > div {
   display: inline-block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
+  width: 84px;
+  height: 84px;
+  margin: 15px;
   border-radius: 50%;
   background: red;
   animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;

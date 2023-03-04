@@ -11,11 +11,12 @@ export const Menu = () => {
        const dispatch = useDispatch()
 
        const fetchCategories = useCallback(() => dispatch(actionsCategories.categoriesOnBack() as any), [dispatch])
-       
+
        useEffect(() => {
               fetchCategories();
        }, [])
        return (
+
               <ul className={css.list}>
                      {categories.map((category) =>
                             <Link to={`/categories/${category.type}`} key={category.id} className={css.categoriesLink}>

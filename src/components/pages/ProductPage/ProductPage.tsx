@@ -1,10 +1,8 @@
 import { useParams, Link } from "react-router-dom";
-// import goods from "../../../assets/goods.json"
-
 import css from "./productPage.module.css"
 import { Breadcrumb, Image, Divider, Button } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons"
-
+import { Loader } from "../../common/Loader";
 import { useEffect, useCallback } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getCategoriesFromStore } from "../../../store/categories/selectors"
