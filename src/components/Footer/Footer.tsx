@@ -46,17 +46,34 @@ export const Footer = () => {
               <>
                      <div className={css.footer}>
                             <div>
-                                   <p className={css.socialMediaNews}>Следите за акциями и новостями</p>
-                                   <ul className={css.networks}>
-                                          {networks.map(item => <li key={item.url}>
-                                                 <a href={item.url} target="_blank">
-                                                        <img src={item.src} alt={item.alt} />
+                                   <div>
+                                          <p className={css.socialMediaNews}>Следите за акциями и новостями</p>
+                                          <ul className={css.networks}>
+                                                 {networks.map(item => <li key={item.url}>
+                                                        <a href={item.url} target="_blank">
+                                                               <img src={item.src} alt={item.alt} />
+                                                        </a>
+                                                 </li>)}
+                                          </ul>
+                                   </div>
+                                   <div>
+                                          <p className={css.socialMediaNews}>Скачайте мобильное приложение</p>
+                                          <div className={css.linkBlock}>
+                                                 <a className={css.downloadGooglePlay} href="https://play.google.com/store/apps/details?id=by.oz.android&referrer=utm_source%3Dmainsite%26utm_medium%3Dfooter%26utm_campaign%3D" >
+                                                        Google Play
                                                  </a>
-                                          </li>)}
-                                   </ul>
+                                                 <a className={css.downloadAppStore} href="https://apps.apple.com/us/app/oz/id1224520373?l=ru" >
+                                                        App Store
+                                                 </a>
+                                                 <a className={css.downloadAppGallery} href="https://appgallery.huawei.com/#/app/C104293475" >
+                                                        App Gallery
+                                                 </a>
+                                          </div>
+                                   </div>
                             </div>
                             <div>
-                                   <p className={css.socialMediaNews}>Скачайте мобильное приложение</p>
+                                   <p className={css.socialMediaNews}>OZ.by™, ООО «Приносим радость», 1999—2023</p>
+                                   <a className={css.linkTrade} href="https://oz.by/help/assistant.phtml?l=i.license">В торговом реестре Республики Беларусь с 17 августа 2022 года</a>
                             </div>
                      </div>
 

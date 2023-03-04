@@ -5,10 +5,13 @@ import { Good, LOAD_STATUSES_TYPES } from "../../types"
 const SLICE_NAME = "goods";
 
 const goodsOnBack = createAsyncThunk(SLICE_NAME, getGoods)
+
+
 interface GoodsStore {
        loadStatus: string;
        goods: Good[];
 }
+
 const initialState: GoodsStore = {
        loadStatus: LOAD_STATUSES_TYPES.SET_UNKNOWN,
        goods: [{

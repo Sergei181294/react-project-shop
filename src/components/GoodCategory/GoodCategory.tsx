@@ -1,11 +1,12 @@
 
-import { useSelector } from "react-redux"
+import { useEffect, useCallback } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { FC } from "react"
 import { Link } from "react-router-dom"
 import { Card } from ".."
 import css from "./goodCategory.module.css"
-// import goods from "../../assets/goods.json"
-import { getLoadStatus, getGoodsFromStore } from "../../store/goods/selectors"
+import { getGoodsFromStore } from "../../store/goods/selectors"
+import { actionsGoods } from "../../store/goods/reducer"
 
 export interface GoodCategoryProps {
        category: {
@@ -13,17 +14,21 @@ export interface GoodCategoryProps {
               type: string;
               label: string;
        }
-
 }
-
-
 
 export const GoodCategory: FC<GoodCategoryProps> = ({ category }) => {
 
        const goods = useSelector(getGoodsFromStore)
-       console.log(goods)
-       return (
+       const dispatch = useDispatch()
 
+       const fetchGoods = useCallback(() => dispatch(actionsGoods.goodsOnBack() as any), [dispatch])
+
+       useEffect(() => {
+              fetchGoods();
+              window.scrollTo(0, 0)
+       }, [])
+
+       return (
               <div>
                      <Link to={`/categories/${category.type}`} className={css.categoriesLink}>
                             <h2 className={css.title}>{category.label}</h2>

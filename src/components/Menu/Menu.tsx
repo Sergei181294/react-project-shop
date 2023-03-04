@@ -1,9 +1,20 @@
 import { Link } from "react-router-dom"
+import { useEffect, useCallback } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { getCategoriesFromStore } from "../../store/categories/selectors"
+import { actionsCategories } from "../../store/categories/reducer"
 import css from "./menu.module.css"
-import categories from "../../assets/categories.json"
 
 export const Menu = () => {
 
+       const categories = useSelector(getCategoriesFromStore)
+       const dispatch = useDispatch()
+
+       const fetchCategories = useCallback(() => dispatch(actionsCategories.categoriesOnBack() as any), [dispatch])
+       
+       useEffect(() => {
+              fetchCategories();
+       }, [])
        return (
               <ul className={css.list}>
                      {categories.map((category) =>
