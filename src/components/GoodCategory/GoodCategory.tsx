@@ -1,8 +1,11 @@
+
+import { useSelector } from "react-redux"
 import { FC } from "react"
 import { Link } from "react-router-dom"
 import { Card } from ".."
 import css from "./goodCategory.module.css"
-import goods from "../../assets/goods.json"
+// import goods from "../../assets/goods.json"
+import { getLoadStatus, getGoodsFromStore } from "../../store/goods/selectors"
 
 export interface GoodCategoryProps {
        category: {
@@ -13,7 +16,12 @@ export interface GoodCategoryProps {
 
 }
 
+
+
 export const GoodCategory: FC<GoodCategoryProps> = ({ category }) => {
+
+       const goods = useSelector(getGoodsFromStore)
+       console.log(goods)
        return (
 
               <div>
@@ -26,9 +34,10 @@ export const GoodCategory: FC<GoodCategoryProps> = ({ category }) => {
                                    .map((item) =>
                                           <li key={item.id}>
                                                  <Card
+                                                        categoryTypeId={item.categoryTypeId}
                                                         id={item.id}
-                                                        image={item.img}
-                                                        title={item.label}
+                                                        img={item.img}
+                                                        label={item.label}
                                                         description={item.description}
                                                         price={item.price}
                                                  />

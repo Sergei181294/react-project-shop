@@ -48,7 +48,7 @@ export const Footer = () => {
                             <div>
                                    <p className={css.socialMediaNews}>Следите за акциями и новостями</p>
                                    <ul className={css.networks}>
-                                          {networks.map(item => <li>
+                                          {networks.map(item => <li key={item.url}>
                                                  <a href={item.url} target="_blank">
                                                         <img src={item.src} alt={item.alt} />
                                                  </a>
