@@ -1,0 +1,6 @@
+.cartWrapper {
+        display: flex;
+}
+.listGoodsInCart {
+        list-style: none;
+}

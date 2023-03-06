@@ -1,0 +1,1 @@
+export { GoodInCart } from "./GoodInCart"

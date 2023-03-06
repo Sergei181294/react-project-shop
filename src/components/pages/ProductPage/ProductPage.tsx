@@ -1,19 +1,23 @@
 import { useParams, Link } from "react-router-dom";
 import css from "./productPage.module.css"
 import { Breadcrumb, Image, Divider, Button } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Loader } from "../../common/Loader";
-import { useEffect, useCallback } from "react"
+import { ShoppingCartOutlined, CheckOutlined } from "@ant-design/icons"
+import { useEffect, useCallback, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getCategoriesFromStore } from "../../../store/categories/selectors"
-import { getGoodsFromStore } from "../../../store/goods/selectors";
+import { getGoodsFromStore, getLoadStatusGoods } from "../../../store/goods/selectors";
 import { actionsCategories } from "../../../store/categories/reducer"
 import { actionsGoods } from "../../../store/goods/reducer";
+import { actions } from "../../../store/cart/reducer";
+import { LOAD_STATUSES_TYPES } from "../../../types";
 
 export const ProductPage = () => {
+       const [btnValue, setBtnValue] = useState("Положить в корзину")
 
        const categories = useSelector(getCategoriesFromStore)
        const goods = useSelector(getGoodsFromStore)
+       const loadStatusGoods = useSelector(getLoadStatusGoods)
        const dispatch = useDispatch()
 
        const fetchCategories = useCallback(() => dispatch(actionsCategories.categoriesOnBack() as any), [dispatch])
@@ -30,35 +34,58 @@ export const ProductPage = () => {
        const { id } = useParams();
        const good = goods.find((good) => good.id === id)
        const category = categories.find((category) => category.type === good?.categoryTypeId)
-
+       console.log(good)
+       const putInCartHandler = () => {
+              setBtnValue("Уже в корзине");
+              dispatch(actions.setItemInCart(good as any))
+       }
 
        return (
               <div className={css.goodWrapper}>
-                     <Breadcrumb className={css.breadcrumb}>
-                            <Breadcrumb.Item>
-                                   <Link to="/" >Главная страница</Link>
-                            </Breadcrumb.Item>
-                            <Breadcrumb.Item>
-                                   <Link to={`/categories/${good?.categoryTypeId}`} >
-                                          {category?.label}
-                                   </Link>
-                            </Breadcrumb.Item>
-                            <Breadcrumb.Item>
-                                   {good?.label}
-                            </Breadcrumb.Item>
-                     </Breadcrumb>
-                     <div className={css.productContainer}>
-                            <Image className={css.productPicture} src={good?.img} alt="icon" />
-                            <div className={css.informationBlock}>
-                                   <h2 className={css.productTitle}>{good?.label}</h2>
-                                   <p className={css.productDescription}>{good?.description}</p>
-                                   <Divider className={css.divider} />
-                                   <p className={css.productPrice}>{good?.price}</p>
-                                   <Button className={css.btnPutInCart} icon={<ShoppingCartOutlined />}>Положить в корзину</Button>
+                     <Loader isLoading={loadStatusGoods === LOAD_STATUSES_TYPES.SET_LOADING} />
+                     {loadStatusGoods === LOAD_STATUSES_TYPES.SET_LOADED &&
+                            <>
+                                   <Breadcrumb className={css.breadcrumb}>
+                                          <Breadcrumb.Item>
+                                                 <Link to="/">Главная страница</Link>
+                                          </Breadcrumb.Item>
+                                          <Breadcrumb.Item>
+                                                 <Link to={`/categories/${good?.categoryTypeId}`} >
+                                                        {category?.label}
+                                                 </Link>
+                                          </Breadcrumb.Item>
+                                          <Breadcrumb.Item>
+                                                 {good?.label}
+                                          </Breadcrumb.Item>
+                                   </Breadcrumb>
+                                   <div className={css.productContainer}>
+                                          <Image className={css.productPicture} src={good?.img} alt="icon" />
+                                          <div className={css.informationBlock}>
+                                                 <h2 className={css.productTitle}>{good?.label}</h2>
+                                                 <p className={css.productDescription}>{good?.description}</p>
+                                                 <Divider className={css.divider} />
+                                                 <p className={css.productPrice}>{good?.price}</p>
+                                                 {btnValue === "Положить в корзину" && <Button
+                                                        className={css.btnPutInCart}
+                                                        icon={<ShoppingCartOutlined />}
+                                                        onClick={() => putInCartHandler()}
+                                                 >
+                                                        {btnValue}
+                                                 </Button>}
+                                                 {btnValue === "Уже в корзине" && <Button
+                                                        className={css.btnGoToCart}
+                                                        icon={<CheckOutlined />}
+                                                 >
+                                                        <Link className={css.linkGoToCart} to="/api/cart">
+                                                               {btnValue}
+                                                        </Link>
 
-                            </div>
+                                                 </Button>}
+                                          </div>
 
-                     </div>
+                                   </div>
+                            </>
+                     }
               </div>
        )
 }
