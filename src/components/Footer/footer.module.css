@@ -1,3 +1,73 @@
 .footer {
-       background-color: aquamarine;
+       display: flex;
+       justify-content: space-between;
+       background-color: rgb(211, 211, 211);
+       height: 170px;
+       padding: 20px;
+}
+
+.socialMediaNews {
+       font-size: 14px;
+       color: gray;
+       font-weight: 400;
+}
+
+.networks {
+       list-style: none;
+       display: flex;
+       gap: 20px;
+}
+
+.linkTrade {
+       font-size: 14px;
+       text-decoration: none;
+       color: rgb(19, 18, 18);
+
+}
+
+.linkTrade:hover {
+       color: gray;
+}
+
+.linkBlock {
+       margin-top: 20px;
+       display: flex;
+       gap: 10px;
+
+}
+
+.downloadGooglePlay {
+       padding: 10px 10px 10px 30px;
+       background-color: #b7b7b7;
+       border-radius: 5px;
+       text-decoration: none;
+       font-size: 14px;
+       color: black;
+       background-image: url(../../assets/images/footer/googlePlay.png);
+       background-repeat: no-repeat;
+       background-position: left 5px center;
+}
+
+.downloadAppStore {
+       padding: 10px 10px 10px 30px;
+       background-color: #b7b7b7;
+       border-radius: 5px;
+       text-decoration: none;
+       font-size: 14px;
+       color: black;
+       background-image: url(../../assets/images/footer/appStore.png);
+       background-repeat: no-repeat;
+       background-position: left 5px center;
+}
+
+.downloadAppGallery {
+       padding: 10px 10px 10px 30px;
+       background-color: #b7b7b7;
+       border-radius: 5px;
+       text-decoration: none;
+       font-size: 14px;
+       color: black;
+       background-image: url(../../assets/images/footer/appGallery.png);
+       background-repeat: no-repeat;
+       background-position: left 5px center;
 }

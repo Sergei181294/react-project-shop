@@ -1,23 +1,37 @@
+
+import { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { FC } from "react"
 import { Link } from "react-router-dom"
 import { Card } from ".."
 import css from "./goodCategory.module.css"
-import goods from "../../assets/goods.json"
+import { getGoodsFromStore } from "../../store/goods/selectors"
+import { actionsGoods } from "../../store/goods/slice"
+import { Good } from "../../types"
 
-interface GoodCategoryProps {
+export interface GoodCategoryProps {
        category: {
               id: string;
               type: string;
               label: string;
        }
-
 }
 
 export const GoodCategory: FC<GoodCategoryProps> = ({ category }) => {
-       return (
 
+       const goods = useSelector(getGoodsFromStore)
+       const dispatch = useDispatch()
+
+       const fetchGoods = () => dispatch(actionsGoods.goodsOnBack() as any)
+
+       useEffect(() => {
+              fetchGoods();
+              window.scrollTo(0, 0)
+       }, [])
+
+       return (
               <div>
-                     <Link to="/" className={css.categoriesLink}>
+                     <Link to={`/categories/${category.type}`} className={css.categoriesLink}>
                             <h2 className={css.title}>{category.label}</h2>
                      </Link>
                      <ul className={css.list}>
@@ -26,8 +40,10 @@ export const GoodCategory: FC<GoodCategoryProps> = ({ category }) => {
                                    .map((item) =>
                                           <li key={item.id}>
                                                  <Card
-                                                        image={item.img}
-                                                        title={item.label}
+                                                        categoryTypeId={item.categoryTypeId}
+                                                        id={item.id}
+                                                        img={item.img}
+                                                        label={item.label}
                                                         description={item.description}
                                                         price={item.price}
                                                  />
