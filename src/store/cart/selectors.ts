@@ -1,6 +1,7 @@
 import type { RootStore } from "..";
+import { Good } from "../../types";
 
 
-export const getCountItemsInCart = (store: RootStore) => store.cart.count;
+export const getTotalCountItemsInCart = (store: RootStore):number => store.cart.totalCount;
 
-export const getGoodsItemsFromCart = (store: RootStore) => store.cart.goods
+export const getGoodsItemsFromCart = (store: RootStore):Good[] => store.cart.goods

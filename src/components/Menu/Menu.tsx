@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import { useEffect, useCallback } from "react"
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getCategoriesFromStore } from "../../store/categories/selectors"
-import { actionsCategories } from "../../store/categories/reducer"
+import { actionsCategories } from "../../store/categories/slice"
 import css from "./menu.module.css"
 
 export const Menu = () => {
@@ -10,7 +10,7 @@ export const Menu = () => {
        const categories = useSelector(getCategoriesFromStore)
        const dispatch = useDispatch()
 
-       const fetchCategories = useCallback(() => dispatch(actionsCategories.categoriesOnBack() as any), [dispatch])
+       const fetchCategories = () => dispatch(actionsCategories.categoriesOnBack() as any)
 
        useEffect(() => {
               fetchCategories();

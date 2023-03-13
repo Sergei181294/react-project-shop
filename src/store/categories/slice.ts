@@ -8,17 +8,13 @@ const categoriesOnBack = createAsyncThunk(SLICE_NAME, getCategories)
 
 
 interface GoodsStore {
-       loadStatus: string;
+       loadStatus: LOAD_STATUSES_TYPES;
        categories: Category[];
 }
 
 const initialState: GoodsStore = {
        loadStatus: LOAD_STATUSES_TYPES.SET_UNKNOWN,
-       categories: [{
-              id: "",
-              type: "",
-              label: "",
-       }]
+       categories: []
 }
 const { reducer, actions } = createSlice({
        name: SLICE_NAME,

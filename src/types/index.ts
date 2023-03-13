@@ -1,3 +1,3 @@
 export type { Good } from "./Good";
-export * from "./LoadStatus"
+export {LOAD_STATUSES_TYPES} from "./LoadStatus"
 export type { Category } from "./Category"

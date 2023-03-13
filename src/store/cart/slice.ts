@@ -3,27 +3,28 @@ import { Good } from "../../types";
 
 interface GoodInCart {
        goods: Good[];
-       count: number;
+       totalCount: number;
        id: string;
 }
 const SLICE_NAME = "cart"
 
 const initialState: GoodInCart = {
        goods: [],
-       count: 0,
+       totalCount: 0,
        id: ""
 }
+
 
 const { reducer, actions: sliceActions } = createSlice({
        name: SLICE_NAME,
        initialState,
        reducers: {
             setItemInCart:(state, action) => {
-              state.count++;
+              state.totalCount++;
               state.goods.push(action.payload)
             },
             deleteItemFromCart:(state) => {
-              state.count--;
+              state.totalCount--;
             },    
        },
        

@@ -4,17 +4,17 @@ import css from "./goodInCart.module.css"
 import { Divider, Button } from "antd"
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
-import { actions } from "../../store/cart/reducer";
+import { actions } from "../../store/cart/slice";
 
 interface GoodInCart {
        good: Good;
-       count: number;
+       totalCount: number;
      
 }
 
 
 
-export const GoodInCart: FC<GoodInCart> = ({ good, count }) => {
+export const GoodInCart: FC<GoodInCart> = ({ good, totalCount }) => {
 
        const dispatch = useDispatch()
        return (
@@ -30,7 +30,7 @@ export const GoodInCart: FC<GoodInCart> = ({ good, count }) => {
                             </div>
                             <div className={css.blockButton}>
                                    <Button shape="circle" icon={<PlusOutlined />} onClick={() => dispatch(actions.setItemInCart(good))}/>
-                                   <p>{count}</p>
+                                   <p>{totalCount}</p>
                                    <Button shape="circle" icon={<MinusOutlined />} onClick={() => dispatch(actions.deleteItemFromCart())}/>
                             </div>
                      </div>

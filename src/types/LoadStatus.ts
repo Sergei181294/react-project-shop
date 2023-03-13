@@ -1,6 +1,6 @@
 export enum LOAD_STATUSES_TYPES {
-       SET_LOADING = "weather/loading",
-       SET_ERROR = "weather/error",
-       SET_LOADED = "weather/loaded",
-       SET_UNKNOWN = "weather/unknown"
+       SET_LOADING = "LOADING",
+       SET_ERROR = "ERROR",
+       SET_LOADED = "LOADED",
+       SET_UNKNOWN = "UNKNOWN"
 }

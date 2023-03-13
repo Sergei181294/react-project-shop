@@ -3,11 +3,11 @@ import { GoodCategory, Loader } from "../.."
 import css from "./categoryPage.module.css"
 import { LOAD_STATUSES_TYPES } from "../../../types"
 import { Breadcrumb } from "antd"
-import { useEffect, useCallback } from "react"
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getCategoriesFromStore, getLoadStatusCategories } from "../../../store/categories/selectors"
 import { getLoadStatusGoods } from "../../../store/goods/selectors"
-import { actionsCategories } from "../../../store/categories/reducer"
+import { actionsCategories } from "../../../store/categories/slice"
 
 
 export const CategoryPage = () => {
@@ -17,8 +17,7 @@ export const CategoryPage = () => {
        const loadStatusGoods = useSelector(getLoadStatusGoods)
        const loadStatusCategories = useSelector(getLoadStatusCategories)
 
-       const fetchCategories = useCallback(() => dispatch(actionsCategories.categoriesOnBack() as any), [dispatch])
-
+       const fetchCategories = () => dispatch(actionsCategories.categoriesOnBack() as any)
        useEffect(() => {
               fetchCategories();
               window.scrollTo(0, 0)

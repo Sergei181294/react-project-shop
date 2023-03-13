@@ -3,13 +3,13 @@ import css from "./productPage.module.css"
 import { Breadcrumb, Image, Divider, Button } from "antd";
 import { Loader } from "../../common/Loader";
 import { ShoppingCartOutlined, CheckOutlined } from "@ant-design/icons"
-import { useEffect, useCallback, useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getCategoriesFromStore } from "../../../store/categories/selectors"
 import { getGoodsFromStore, getLoadStatusGoods } from "../../../store/goods/selectors";
-import { actionsCategories } from "../../../store/categories/reducer"
-import { actionsGoods } from "../../../store/goods/reducer";
-import { actions } from "../../../store/cart/reducer";
+import { actionsCategories } from "../../../store/categories/slice"
+import { actionsGoods } from "../../../store/goods/slice";
+import { actions } from "../../../store/cart/slice";
 import { LOAD_STATUSES_TYPES } from "../../../types";
 
 export const ProductPage = () => {
@@ -20,9 +20,9 @@ export const ProductPage = () => {
        const loadStatusGoods = useSelector(getLoadStatusGoods)
        const dispatch = useDispatch()
 
-       const fetchCategories = useCallback(() => dispatch(actionsCategories.categoriesOnBack() as any), [dispatch])
+       const fetchCategories = () => dispatch(actionsCategories.categoriesOnBack() as any)
 
-       const fetchGoods = useCallback(() => dispatch(actionsGoods.goodsOnBack() as any), [dispatch])
+       const fetchGoods = () => dispatch(actionsGoods.goodsOnBack() as any)
 
        useEffect(() => {
               fetchCategories();
@@ -34,7 +34,7 @@ export const ProductPage = () => {
        const { id } = useParams();
        const good = goods.find((good) => good.id === id)
        const category = categories.find((category) => category.type === good?.categoryTypeId)
-       console.log(good)
+
        const putInCartHandler = () => {
               setBtnValue("Уже в корзине");
               dispatch(actions.setItemInCart(good as any))

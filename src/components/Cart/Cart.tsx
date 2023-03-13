@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { Breadcrumb } from "antd"
 import { Link, useParams } from "react-router-dom"
 import css from "./cart.module.css"
-import { getCountItemsInCart } from "../../store/cart/selectors"
+import { getTotalCountItemsInCart } from "../../store/cart/selectors"
 import { GoodInCart } from "../GoodInCart"
 import { getGoodsItemsFromCart } from "../../store/cart/selectors"
 
@@ -13,7 +13,7 @@ export const Cart = () => {
 
 
        const goods = useSelector(getGoodsItemsFromCart);
-       const count = useSelector(getCountItemsInCart);
+       const totalCount = useSelector(getTotalCountItemsInCart);
 
        const uniqueGoods = Array.from(new Set(goods));
 
@@ -31,13 +31,13 @@ export const Cart = () => {
                                    <ul className={css.listGoodsInCart}>
                                           {uniqueGoods
                                                  .map((good) => <li key={good.id}>
-                                                        <GoodInCart good={good} count={0} />
+                                                        <GoodInCart good={good} totalCount={0} />
                                                  </li>
                                                  )}
                                    </ul>
                             </div>
                             <div>
-                                   <h2>Количество товаров в корзине: {count}</h2>
+                                   <h2>Количество товаров в корзине: {totalCount}</h2>
                             </div>
 
                      </div>

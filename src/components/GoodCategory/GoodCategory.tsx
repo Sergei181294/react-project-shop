@@ -1,12 +1,13 @@
 
-import { useEffect, useCallback } from "react"
+import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { FC } from "react"
 import { Link } from "react-router-dom"
 import { Card } from ".."
 import css from "./goodCategory.module.css"
 import { getGoodsFromStore } from "../../store/goods/selectors"
-import { actionsGoods } from "../../store/goods/reducer"
+import { actionsGoods } from "../../store/goods/slice"
+import { Good } from "../../types"
 
 export interface GoodCategoryProps {
        category: {
@@ -21,7 +22,7 @@ export const GoodCategory: FC<GoodCategoryProps> = ({ category }) => {
        const goods = useSelector(getGoodsFromStore)
        const dispatch = useDispatch()
 
-       const fetchGoods = useCallback(() => dispatch(actionsGoods.goodsOnBack() as any), [dispatch])
+       const fetchGoods = () => dispatch(actionsGoods.goodsOnBack() as any)
 
        useEffect(() => {
               fetchGoods();
