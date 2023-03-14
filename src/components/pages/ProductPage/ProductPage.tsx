@@ -33,7 +33,7 @@ export const ProductPage = () => {
 
        const { id } = useParams();
        const good = goods.find((good) => good.id === id)
-       const category = categories.find((category) => category.type === good?.categoryTypeId)
+       const category = categories.find((category) => category.id === good?.categoryTypeId)
 
        const putInCartHandler = () => {
               setBtnValue("Уже в корзине");
@@ -50,7 +50,7 @@ export const ProductPage = () => {
                                                  <Link to="/">Главная страница</Link>
                                           </Breadcrumb.Item>
                                           <Breadcrumb.Item>
-                                                 <Link to={`/categories/${good?.categoryTypeId}`} >
+                                                 <Link to={`/categories/${category?.type}`} >
                                                         {category?.label}
                                                  </Link>
                                           </Breadcrumb.Item>

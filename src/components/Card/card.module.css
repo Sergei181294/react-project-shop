@@ -12,10 +12,11 @@
        max-width: 100px;
        position: absolute;
        left: 5px;
-       top: 40px;
-       color: rgb(70, 0, 0);
+       bottom: 40px;
+       color: rgb(255, 153, 0);
        font-size: 18px;
        font-weight: 800;
+       
 }
 
 .description {
@@ -23,19 +24,23 @@
        max-width: 100px;
        position: absolute;
        left: 5px;
-       top: 60px;
-       color: rgb(70, 0, 0);
+       bottom:-45px;
+       color: rgb(255, 153, 0);
        font-size: 14px;
        font-weight: 600;
+       -webkit-line-clamp: 5;
+       display: -webkit-box;
+       -webkit-box-orient: vertical;
+       overflow: hidden;
 }
 
 .price {
-       margin: 0 ;
+       margin: 0;
        width: 100px;
        position: absolute;
        left: 5px;
        top: 80px;
-       color: rgb(71, 0, 0);
+       color: rgb(255, 153, 0);
        font-size: 18px;
        font-weight: 600;
 }

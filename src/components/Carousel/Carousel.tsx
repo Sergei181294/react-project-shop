@@ -25,7 +25,6 @@ const carouselArray = [
 export const CarouselSlider = () => {
        return (
               <Carousel autoplay dots={false} className={css.carousel}>
-
                      {carouselArray.map(item => <CarouselBlock
                             key={uuidv4()}
                             img={item.src}
@@ -35,18 +34,6 @@ export const CarouselSlider = () => {
                             btnValue={item.buttonText}
                      />
                      )}
-                     {/* <div className={css.blockCarousel}>
-                                   <img className={css.imgCarousel} src={img1} alt="presents" />
-                                   <h1 className={css.titleBook}>Книги со скидкой 20%</h1>
-                                   <p className={css.subtitleBook}>Издательство «АСТ»</p>
-                                   <Button className={css.btnCarouselBook}>Выбрать товары</Button>
-                            </div> */}
-                     {/* <div className={css.blockCarousel}>
-                                   <img className={css.imgCarousel} src={img2} alt="books" />
-                                   <h1 className={css.titlePresents}>Подарки на 8 марта со скидками до 50%</h1>
-                                   <p className={css.subtitlePresents}>Косметика, книги, техника, сладости</p>
-                                   <Button className={css.btnCarouselPresents} >Выбрать товары</Button>
-                            </div> */}
               </Carousel>
        )
 }

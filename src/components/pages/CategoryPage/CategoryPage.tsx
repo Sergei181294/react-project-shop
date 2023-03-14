@@ -13,6 +13,7 @@ import { actionsCategories } from "../../../store/categories/slice"
 export const CategoryPage = () => {
 
        const categories = useSelector(getCategoriesFromStore)
+       
        const dispatch = useDispatch()
        const loadStatusGoods = useSelector(getLoadStatusGoods)
        const loadStatusCategories = useSelector(getLoadStatusCategories)

@@ -36,7 +36,7 @@ export const GoodCategory: FC<GoodCategoryProps> = ({ category }) => {
                      </Link>
                      <ul className={css.list}>
                             {goods
-                                   .filter((item) => item.categoryTypeId === category.type)
+                                   // .filter((item) => item.categoryTypeId === category.type)
                                    .map((item) =>
                                           <li key={item.id}>
                                                  <Card

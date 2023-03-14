@@ -29,7 +29,7 @@ const { reducer, actions } = createSlice({
               });
               builder.addCase(categoriesOnBack.fulfilled, (state, action) => {
                      state.loadStatus = LOAD_STATUSES_TYPES.SET_LOADED;
-                     state.categories = action.payload;
+                     state.categories = action.payload.categories;
               })
        }
 })
