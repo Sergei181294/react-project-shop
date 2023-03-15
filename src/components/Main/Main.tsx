@@ -1,17 +1,18 @@
 import { Menu, GoodCategory, CarouselSlider } from ".."
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { getCategoriesFromStore } from "store/categories/selectors"
-import { actionsCategories } from "store/categories/slice"
+import { getPopularCategoriesFromStore } from "../../store/popularCategories/selectors"
+import { actionsPopularCategories } from "../../store/popularCategories/slice"
 import css from "./main.module.css"
 
 
 export const Main = () => {
 
-       const categories = useSelector(getCategoriesFromStore)
+       const categories = useSelector(getPopularCategoriesFromStore)
        const dispatch = useDispatch()
+       
+       const fetchCategories = () => dispatch(actionsPopularCategories.popularCategoriesOnBack() as any)
 
-       const fetchCategories = () => dispatch(actionsCategories.categoriesOnBack() as any)
        useEffect(() => {
               fetchCategories();
        }, [])
@@ -23,7 +24,7 @@ export const Main = () => {
                             <CarouselSlider />
                      </div>
 
-                     {categories.map(category => <GoodCategory key={category.id} category={category} />)}
+                     {categories.map(category => <GoodCategory key={category.category.id} category={category} />)}
               </>
        )
 }

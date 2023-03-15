@@ -1,39 +1,30 @@
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom"
-import { Input, Button, Divider, Select } from 'antd';
+import { Button, Divider, AutoComplete } from 'antd';
 import css from "./header.module.css"
 import { useState, useEffect, useCallback } from "react"
 import debounce from 'lodash/debounce';
-import { useDispatch, useSelector } from "react-redux";
-import { actionsGoods } from "store/goods/slice";
-import { getGoodsFromStore } from "store/goods/selectors";
-
-
+import { getGoods } from "api";
+import { Good } from "types";
 
 export interface Params {
        text: string;
 }
 
 export const Header = () => {
-
+       const navigate = useNavigate()
        const [params, setParams] = useState<Params>({ text: "" });
-       const dispatch = useDispatch()
-
-       // const updateParams = (nextParams: Partial<Params>) => {
-       //        setParams((prevParams) => ({ ...prevParams, ...nextParams }));
-
-       // };
-
-       const fetchGoodsDebounce = useCallback(debounce((params: Params) => dispatch(actionsGoods.goodsOnBack(params) as any), 1500), [dispatch])
-
+       const [goods, setGoods] = useState<Good[]>([{ categoryTypeId: "", description: "", id: "", img: "", label: "", price: "" }])
+       const fetchedDebounce = useCallback(debounce((params) => getGoods(params).then(data => setGoods(data.items)), 1500), [])
        useEffect(() => {
-              fetchGoodsDebounce(params);
+              fetchedDebounce(params)
        }, [params])
-
-       const goods = useSelector(getGoodsFromStore)
-
-
-       const { Option } = Select
-
+       const updateParams = (value: string) => {
+              setParams((prevParams) => ({ ...prevParams, text: value }));
+       };
+       // const goToProductPage = () => {
+       //        navigate(`/goods/${}`)
+       // }
        return (
               <>
                      <div className={css.headerWrapper}>
@@ -43,19 +34,20 @@ export const Header = () => {
                                    </div>
                             </Link>
                             <div className={css.searchAuthAndBasketBlock}>
-                                   <Select
-                                          showSearch
-                                          style={{ width: 200 }}
-                                          placeholder="Select a person"
-                                          optionFilterProp="children"
-                                          onChange={(e) => setParams({ text: e })}
-                                          filterOption={(input, option) => option?.props.value.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-
-                                   >
-                                          {goods.map(good => <Option key={good.id} value={good.label} >{good.label}</Option>)}
-                                   </Select>
+                                   <AutoComplete
+                                          style={{ width: 280 }}
+                                          placeholder="Введите название товара..."
+                                          options={(goods || []).map((good) => ({
+                                                 key: good.id,
+                                                 value: good.label,
+                                                 label: good.label
+                                          }))}
+                                          filterOption={true}
+                                          // onSelect={goToProductPage}
+                                          onChange={(value) => { updateParams(value) }}
+                                   />
                                    <Link to="/login">
-                                          <Button className={css.searchButton} >Войти</Button>
+                                          <Button className={css.searchButton}>Войти</Button>
                                    </Link>
 
                                    <Link to="/api/cart" className={css.basket}>

@@ -84,3 +84,13 @@
        border: none;
        margin-left: 15px;
 }
+
+.checkboxLabel {
+       font-size: 14px;
+       margin-left: 5px;
+}
+
+.checkboxBlock>label {
+       display: flex;
+       align-items: center;
+}

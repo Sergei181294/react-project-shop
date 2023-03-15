@@ -24,4 +24,6 @@ export const getCategories = (): Promise<{ categories: Category[] }> => getData(
 
 export const getGoods = (params?: { text?: string }): Promise<{ items: Good[]; total: number }> => getData("/api/goods", params);
 
+export const getPopularCategories = (): Promise<{ category: Category; items: Good[] }[]> => getData("/api/popular_categories");
+
 

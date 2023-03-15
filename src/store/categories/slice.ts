@@ -7,12 +7,12 @@ const SLICE_NAME = "categories";
 const categoriesOnBack = createAsyncThunk(SLICE_NAME, getCategories)
 
 
-interface GoodsStore {
+interface CategoriesStore {
        loadStatus: LOAD_STATUSES_TYPES;
        categories: Category[];
 }
 
-const initialState: GoodsStore = {
+const initialState: CategoriesStore = {
        loadStatus: LOAD_STATUSES_TYPES.SET_UNKNOWN,
        categories: []
 }

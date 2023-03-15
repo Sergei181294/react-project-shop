@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { Input, Button, Radio, Checkbox, RadioChangeEvent, Switch, DatePicker } from "antd"
 import css from "./registrationPage.module.css"
 import cancel from "assets/images/RegistrationPage/cancel.svg"
-import { Formik } from "formik"
+import { Formik, Form, Field } from "formik"
 import * as yup from "yup"
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
@@ -30,9 +30,9 @@ export const RegistrationPage = () => {
               firstName: yup.string().typeError("Должна быть строкой*").required("Обязательное поле*").test('len', 'Должно быть более двух символов*', val => val.toString().length > 2),
               secondName: yup.string().typeError("Должна быть строкой*").test('len', 'Должно быть более двух символов*', (val) => { if (val) return val.toString().length > 2 }),
               email: yup.string().email("Введите валидный email*").required("Обязательное поле*"),
-              password: yup.string().required("Обязательное поле*"),
-              confirmPassword: yup.string().oneOf([yup.ref('password')], 'Пароли не совпадают*').required("Обязательное поле*"),
-              checkbox: yup.boolean(),
+              password: yup.string().required("Обязательное поле*").test('len', 'Должно быть не менее 6 символов*', (val) => { if (val) return val.toString().length >= 6 }),
+              confirmPassword: yup.string().oneOf([yup.ref('password')], 'Пароли не совпадают*').required("Обязательное поле*").test('len', 'Должно быть не менее 6 символов*', (val) => { if (val) return val.toString().length >= 6 }),
+              termAndConditions: yup.array().min(1).of(yup.string().required()).required(),
        })
 
        return (
@@ -50,7 +50,7 @@ export const RegistrationPage = () => {
                                           email: "",
                                           password: "",
                                           confirmPassword: "",
-                                          checkbox: false,
+                                          termAndConditions: [],
 
                                    }}
                                    validateOnBlur
@@ -141,21 +141,28 @@ export const RegistrationPage = () => {
 
 
                                                  <div className={css.informationBlock}>
-                                                        <span>Выберите любимые категории</span><br/>
-                                                        <div id={css.checkboxBlock}>
-                                                               {categories.map(category =>
-                                                                      <Checkbox key={category.id} className={css.checkboxCategory}>{category.label}</Checkbox>)}
-                                                        </div>
+                                                        <span>Выберите любимые категории</span><br />
+                                                        <Form>
+                                                               <div id={css.checkboxBlock}>
+                                                                      {categories.map(category =>
+                                                                             <label key={category.id}>
+                                                                                    <Field type="checkbox" name={category.label} />
+                                                                                    <span className={css.checkboxLabel}>{category.label}</span>
+                                                                             </label>
+                                                                      )}
+                                                               </div>
+                                                               {errors.termAndConditions && <p className={css.error}>{errors.termAndConditions}</p>}
+                                                        </Form>
                                                  </div>
 
                                                  <div className={css.informationBlock}>
                                                         <span>Подписаться на новости OZ.by</span>
-                                                        <Switch defaultChecked className={css.switchButton}/>
+                                                        <Switch defaultChecked className={css.switchButton} />
                                                  </div>
 
                                                  <div className={css.informationBlock}>
                                                         <span>Выберите дату рождения:</span>
-                                                        <DatePicker className={css.datepicker}/>
+                                                        <DatePicker className={css.datepicker} />
                                                  </div>
 
 
@@ -163,7 +170,8 @@ export const RegistrationPage = () => {
                                                  <div className={css.informationBlock}>
                                                         <Button
                                                                disabled={!isValid && !dirty}
-                                                               onClick={handleBlur}
+                                                               onClick={() => handleSubmit()}
+
                                                                className={css.registrationBtn}
                                                         >
                                                                Зарегистрироваться
