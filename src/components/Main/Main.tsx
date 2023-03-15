@@ -1,8 +1,8 @@
 import { Menu, GoodCategory, CarouselSlider } from ".."
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { getCategoriesFromStore } from "../../store/categories/selectors"
-import { actionsCategories } from "../../store/categories/slice"
+import { getCategoriesFromStore } from "store/categories/selectors"
+import { actionsCategories } from "store/categories/slice"
 import css from "./main.module.css"
 
 

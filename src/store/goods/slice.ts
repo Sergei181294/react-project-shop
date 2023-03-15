@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getGoods } from "../../api";
-import { Good, LOAD_STATUSES_TYPES } from "../../types"
+import { getGoods } from "api";
+import { Good, LOAD_STATUSES_TYPES } from "types"
 
 const SLICE_NAME = "goods";
 

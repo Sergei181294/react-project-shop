@@ -1,10 +1,10 @@
-import { Good } from "../../types";
+import { Good } from "types";
 import { FC } from "react"
 import css from "./goodInCart.module.css"
 import { Divider, Button } from "antd"
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
-import { actions } from "../../store/cart/slice";
+import { actions } from "store/cart/slice";
 
 interface GoodInCart {
        good: Good;

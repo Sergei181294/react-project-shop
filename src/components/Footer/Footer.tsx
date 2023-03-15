@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom"
+
 import css from "./footer.module.css"
-import facebookLogo from "../../assets/images/footer/facebook.png";
-import instaLogo from "../../assets/images/footer/insta.png";
-import vkLogo from "../../assets/images/footer/vk.png"
-import telegramLogo from "../../assets/images/footer/telegram.png"
-import tiktokLogo from "../../assets/images/footer/tiktok.png"
-import youtubeLogo from "../../assets/images/footer/youtube.png"
+import facebookLogo from "assets/images/footer/facebook.png";
+import instaLogo from "assets/images/footer/insta.png";
+import vkLogo from "assets/images/footer/vk.png"
+import telegramLogo from "assets/images/footer/telegram.png"
+import tiktokLogo from "assets/images/footer/tiktok.png"
+import youtubeLogo from "assets/images/footer/youtube.png"
 
 
 const networks = [

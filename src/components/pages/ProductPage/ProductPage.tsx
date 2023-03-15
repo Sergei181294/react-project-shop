@@ -5,12 +5,12 @@ import { Loader } from "../../common/Loader";
 import { ShoppingCartOutlined, CheckOutlined } from "@ant-design/icons"
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { getCategoriesFromStore } from "../../../store/categories/selectors"
-import { getGoodsFromStore, getLoadStatusGoods } from "../../../store/goods/selectors";
-import { actionsCategories } from "../../../store/categories/slice"
-import { actionsGoods } from "../../../store/goods/slice";
-import { actions } from "../../../store/cart/slice";
-import { LOAD_STATUSES_TYPES } from "../../../types";
+import { getCategoriesFromStore } from "store/categories/selectors"
+import { getGoodsFromStore, getLoadStatusGoods } from "store/goods/selectors";
+import { actionsCategories } from "store/categories/slice"
+import { actionsGoods } from "store/goods/slice";
+import { actions } from "store/cart/slice";
+import { LOAD_STATUSES_TYPES } from "types";
 
 export const ProductPage = () => {
        const [btnValue, setBtnValue] = useState("Положить в корзину")

@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom"
 import { Input, Button, Radio, Checkbox, RadioChangeEvent, Switch, DatePicker } from "antd"
 import css from "./registrationPage.module.css"
-import cancel from "../../../assets/images/RegistrationPage/cancel.svg"
+import cancel from "assets/images/RegistrationPage/cancel.svg"
 import { Formik } from "formik"
 import * as yup from "yup"
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { getCategoriesFromStore } from "../../../store/categories/selectors"
-import { actionsCategories } from "../../../store/categories/slice"
+import { getCategoriesFromStore } from "store/categories/selectors"
+import { actionsCategories } from "store/categories/slice"
 
 
 export const RegistrationPage = () => {

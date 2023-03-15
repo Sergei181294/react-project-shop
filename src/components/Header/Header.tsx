@@ -4,8 +4,8 @@ import css from "./header.module.css"
 import { useState, useEffect, useCallback } from "react"
 import debounce from 'lodash/debounce';
 import { useDispatch, useSelector } from "react-redux";
-import { actionsGoods } from "../../store/goods/slice";
-import { getGoodsFromStore } from "../../store/goods/selectors";
+import { actionsGoods } from "store/goods/slice";
+import { getGoodsFromStore } from "store/goods/selectors";
 
 
 
@@ -30,8 +30,8 @@ export const Header = () => {
        }, [params])
 
        const goods = useSelector(getGoodsFromStore)
-       console.log(goods);
-       
+
+
        const { Option } = Select
 
        return (
@@ -45,9 +45,12 @@ export const Header = () => {
                             <div className={css.searchAuthAndBasketBlock}>
                                    <Select
                                           showSearch
+                                          style={{ width: 200 }}
                                           placeholder="Select a person"
                                           optionFilterProp="children"
                                           onChange={(e) => setParams({ text: e })}
+                                          filterOption={(input, option) => option?.props.value.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+
                                    >
                                           {goods.map(good => <Option key={good.id} value={good.label} >{good.label}</Option>)}
                                    </Select>

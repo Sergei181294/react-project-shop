@@ -1,7 +1,7 @@
 import { FC } from "react"
 import css from "./card.module.css"
 import { Link } from "react-router-dom"
-import { Good } from "../../types/Good"
+import { Good } from "types/Good"
 
 
 export const Card: FC<Good> = ({ id, img, label, price, description }) => {

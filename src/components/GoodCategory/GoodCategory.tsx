@@ -5,9 +5,9 @@ import { FC } from "react"
 import { Link } from "react-router-dom"
 import { Card } from ".."
 import css from "./goodCategory.module.css"
-import { getGoodsFromStore } from "../../store/goods/selectors"
-import { actionsGoods } from "../../store/goods/slice"
-import { Good } from "../../types"
+import { getGoodsFromStore } from "store/goods/selectors"
+import { actionsGoods } from "store/goods/slice"
+import { Good } from "types"
 
 export interface GoodCategoryProps {
        category: {

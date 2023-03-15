@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Good } from "../../types";
+import { Good } from "types";
 
 interface GoodInCart {
        goods: Good[];

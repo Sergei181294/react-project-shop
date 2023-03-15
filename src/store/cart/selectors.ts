@@ -1,5 +1,5 @@
 import type { RootStore } from "..";
-import { Good } from "../../types";
+import { Good } from "types";
 
 
 export const getTotalCountItemsInCart = (store: RootStore):number => store.cart.totalCount;

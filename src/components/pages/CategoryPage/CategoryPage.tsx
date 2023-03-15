@@ -1,13 +1,13 @@
 import { useParams, Link } from "react-router-dom"
 import { GoodCategory, Loader } from "../.."
 import css from "./categoryPage.module.css"
-import { LOAD_STATUSES_TYPES } from "../../../types"
+import { LOAD_STATUSES_TYPES } from "types"
 import { Breadcrumb } from "antd"
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { getCategoriesFromStore, getLoadStatusCategories } from "../../../store/categories/selectors"
-import { getLoadStatusGoods } from "../../../store/goods/selectors"
-import { actionsCategories } from "../../../store/categories/slice"
+import { getCategoriesFromStore, getLoadStatusCategories } from "store/categories/selectors"
+import { getLoadStatusGoods } from "store/goods/selectors"
+import { actionsCategories } from "store/categories/slice"
 
 
 export const CategoryPage = () => {

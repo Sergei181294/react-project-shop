@@ -1,7 +1,7 @@
 import css from "./loginPage.module.css"
 import { Input, Button } from "antd"
 import { Link } from "react-router-dom"
-import cancel from "../../../assets/images/RegistrationPage/cancel.svg"
+import cancel from "assets/images/RegistrationPage/cancel.svg"
 
 export const LoginPage = () => {
        return (

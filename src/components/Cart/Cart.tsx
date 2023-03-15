@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux"
 import { Breadcrumb } from "antd"
 import { Link, useParams } from "react-router-dom"
 import css from "./cart.module.css"
-import { getTotalCountItemsInCart } from "../../store/cart/selectors"
+import { getTotalCountItemsInCart } from "store/cart/selectors"
 import { GoodInCart } from "../GoodInCart"
-import { getGoodsItemsFromCart } from "../../store/cart/selectors"
+import { getGoodsItemsFromCart } from "store/cart/selectors"
 
 
 export const Cart = () => {
