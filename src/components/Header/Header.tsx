@@ -13,18 +13,20 @@ export interface Params {
 
 export const Header = () => {
        const navigate = useNavigate()
+       
        const [params, setParams] = useState<Params>({ text: "" });
        const [goods, setGoods] = useState<Good[]>([{ categoryTypeId: "", description: "", id: "", img: "", label: "", price: "" }])
+
        const fetchedDebounce = useCallback(debounce((params) => getGoods(params).then(data => setGoods(data.items)), 1500), [])
+
        useEffect(() => {
               fetchedDebounce(params)
        }, [params])
+
        const updateParams = (value: string) => {
               setParams((prevParams) => ({ ...prevParams, text: value }));
        };
-       // const goToProductPage = () => {
-       //        navigate(`/goods/${}`)
-       // }
+
        return (
               <>
                      <div className={css.headerWrapper}>
@@ -35,7 +37,7 @@ export const Header = () => {
                             </Link>
                             <div className={css.searchAuthAndBasketBlock}>
                                    <AutoComplete
-                                          style={{ width: 280 }}
+                                          style={{ width: 780 }}
                                           placeholder="Введите название товара..."
                                           options={(goods || []).map((good) => ({
                                                  key: good.id,
@@ -43,8 +45,8 @@ export const Header = () => {
                                                  label: good.label
                                           }))}
                                           filterOption={true}
-                                          // onSelect={goToProductPage}
-                                          onChange={(value) => { updateParams(value) }}
+                                          onSelect={(_, {key}) => navigate(`/goods/${key}`)}
+                                          onChange={updateParams}
                                    />
                                    <Link to="/login">
                                           <Button className={css.searchButton}>Войти</Button>

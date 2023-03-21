@@ -8,13 +8,14 @@ import { actions } from "store/cart/slice";
 
 interface GoodInCart {
        good: Good;
-       totalCount: number;
+       count: number;
+       id: ""
      
 }
 
 
 
-export const GoodInCart: FC<GoodInCart> = ({ good, totalCount }) => {
+export const GoodInCart: FC<GoodInCart> = ({ good, count, id }) => {
 
        const dispatch = useDispatch()
        return (
@@ -29,9 +30,9 @@ export const GoodInCart: FC<GoodInCart> = ({ good, totalCount }) => {
                                    </div>
                             </div>
                             <div className={css.blockButton}>
-                                   <Button shape="circle" icon={<PlusOutlined />} onClick={() => dispatch(actions.setItemInCart(good))}/>
-                                   <p>{totalCount}</p>
-                                   <Button shape="circle" icon={<MinusOutlined />} onClick={() => dispatch(actions.deleteItemFromCart())}/>
+                                   {/* <Button shape="circle" icon={<PlusOutlined />} onClick={() => dispatch(actions.setItemInCart(good))}/>
+                                   <p>{0}</p>
+                                   <Button shape="circle" icon={<MinusOutlined />} onClick={() => dispatch(actions.deleteItemFromCart())}/> */}
                             </div>
                      </div>
                      <Divider />

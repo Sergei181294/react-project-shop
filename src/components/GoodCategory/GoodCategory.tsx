@@ -2,26 +2,27 @@ import { FC } from "react"
 import { Link } from "react-router-dom"
 import { Card } from ".."
 import css from "./goodCategory.module.css"
-import { Category, Good } from "types"
+import { Good } from "types"
 
 
 export interface GoodCategoryProps {
-       category: {
-              category: Category,
-              items: Good[]
-       }
-
+       label: string,
+       items: Good[],
+       type?:string,
 }
 
-export const GoodCategory: FC<GoodCategoryProps> = ({ category }) => {
+
+
+export const GoodCategory: FC<GoodCategoryProps> = ({ label, items, type }) => {
+
 
        return (
               <div>
-                     <Link to={`/categories/${category.category.type}`} className={css.categoriesLink}>
-                            <h2 className={css.title}>{category.category.label}</h2>
+                     <Link to={`/categories/${type}`} className={css.categoriesLink}>
+                            <h2 className={css.title}>{label}</h2>
                      </Link>
                      <ul className={css.list}>
-                            {category.items.map((item) =>
+                            {items.map((item) =>
                                    <li key={item.id}>
                                           <Card
                                                  categoryTypeId={item.categoryTypeId}

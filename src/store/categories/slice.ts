@@ -7,7 +7,7 @@ const SLICE_NAME = "categories";
 const categoriesOnBack = createAsyncThunk(SLICE_NAME, getCategories)
 
 
-interface CategoriesStore {
+export interface CategoriesStore {
        loadStatus: LOAD_STATUSES_TYPES;
        categories: Category[];
 }

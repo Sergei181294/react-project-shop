@@ -1,10 +1,10 @@
 import type { RootStore } from "..";
-import { LOAD_STATUSES_TYPES, Category, Good } from "types";
+import type { PopularCategoriesStore } from "./slice"
 
 
-export const getLoadStatusPopularCategories = (store: RootStore):LOAD_STATUSES_TYPES => store.popularCategories.loadStatus;
+export const getLoadStatusPopularCategories = (store: RootStore):PopularCategoriesStore["loadStatus"] => store.popularCategories.loadStatus;
 
-export const getPopularCategoriesFromStore = (store: RootStore):{category:Category, items:Good[]}[] => store.popularCategories.data;
+export const getPopularCategoriesFromStore = (store: RootStore):PopularCategoriesStore["data"] => store.popularCategories.data;
 
 
 

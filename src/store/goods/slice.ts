@@ -7,7 +7,7 @@ const SLICE_NAME = "goods";
 const goodsOnBack = createAsyncThunk(SLICE_NAME, getGoods)
 
 
-interface GoodsStore {
+export interface GoodsStore {
        loadStatus: LOAD_STATUSES_TYPES;
        goods: Good[];
 }

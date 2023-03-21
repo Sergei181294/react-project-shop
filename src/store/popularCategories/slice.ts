@@ -7,7 +7,7 @@ const SLICE_NAME = "popularCategories";
 const popularCategoriesOnBack = createAsyncThunk(SLICE_NAME, getPopularCategories)
 
 
-interface PopularCategoriesStore {
+export interface PopularCategoriesStore {
        loadStatus: LOAD_STATUSES_TYPES;
        data: {
               category: Category,
@@ -15,7 +15,7 @@ interface PopularCategoriesStore {
        }[]
 }
 
-const initialState: PopularCategoriesStore = {
+ const initialState: PopularCategoriesStore = {
        loadStatus: LOAD_STATUSES_TYPES.SET_UNKNOWN,
        data: [{
               category: { id: "", label: "", type: "" },

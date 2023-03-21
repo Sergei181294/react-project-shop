@@ -1,33 +1,40 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { Good } from "types";
+import { addToCart } from "api";
+
+const SLICE_NAME = "cart";
+
+export const sendToCart = createAsyncThunk(SLICE_NAME, async (product: Good) => {
+       const response = await addToCart(product)
+       return response;
+})
 
 interface GoodInCart {
-       goods: Good[];
-       totalCount: number;
-       id: string;
-}
-const SLICE_NAME = "cart"
+       good: Good;
+       count: number;
+       id: string
+}[]
 
 const initialState: GoodInCart = {
-       goods: [],
-       totalCount: 0,
+       good: { categoryTypeId: "", description: "", id: "", img: "", label: "", price: "" },
+       count: 0,
        id: ""
 }
 
-
-const { reducer, actions: sliceActions } = createSlice({
+export const { reducer, actions: sliceActions } = createSlice({
        name: SLICE_NAME,
        initialState,
        reducers: {
-            setItemInCart:(state, action) => {
-              state.totalCount++;
-              state.goods.push(action.payload)
-            },
-            deleteItemFromCart:(state) => {
-              state.totalCount--;
-            },    
+              
        },
-       
+       // extraReducers: (builder) => {
+       //        builder.addCase(addToCart.fulfilled, (state, action) => {
+       //               const { productId } = action.payload;
+       //               return [...state, productId];
+       //        });
+       // },
+
+
 })
 export const actions = { ...sliceActions }
-export { reducer }
+// export { reducer }

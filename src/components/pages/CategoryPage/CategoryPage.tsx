@@ -1,39 +1,51 @@
 import { useParams, Link } from "react-router-dom"
 import { GoodCategory, Loader } from "../.."
 import css from "./categoryPage.module.css"
-import { LOAD_STATUSES_TYPES } from "types"
+import { Good, LOAD_STATUSES_TYPES } from "types"
 import { Breadcrumb } from "antd"
-import { useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { useEffect, useState, useMemo} from "react"
+import { useSelector } from "react-redux"
+import { useAppDispatch } from "hooks/hooks"
 import { getCategoriesFromStore, getLoadStatusCategories } from "store/categories/selectors"
 import { getLoadStatusGoods } from "store/goods/selectors"
 import { actionsCategories } from "store/categories/slice"
+import { getGoods } from "api"
+
 
 
 export const CategoryPage = () => {
+       const [goods, setGoods] = useState<Good[]>([])
+
+       const { type } = useParams();
 
        const categories = useSelector(getCategoriesFromStore)
-       
-       const dispatch = useDispatch()
+
+       const dispatch = useAppDispatch()
        const loadStatusGoods = useSelector(getLoadStatusGoods)
        const loadStatusCategories = useSelector(getLoadStatusCategories)
 
-       const fetchCategories = () => dispatch(actionsCategories.categoriesOnBack() as any)
+       const fetchCategories = () => dispatch(actionsCategories.categoriesOnBack())
+
        useEffect(() => {
               fetchCategories();
               window.scrollTo(0, 0)
        }, [])
 
-       const { type } = useParams();
-
        const category = categories.find((category) => category.type === type)
+       
+
+       useEffect(() => {
+              if (category) {
+                     getGoods({ categoryTypeIds: category.id }).then(data => setGoods(data.items))
+              } 
+       }, [category])
 
 
        return (
 
               <div className={css.categoryWrapper}>
-                     <Loader isLoading={loadStatusCategories === LOAD_STATUSES_TYPES.SET_LOADING} />
-                     {loadStatusCategories === LOAD_STATUSES_TYPES.SET_ERROR && (<span>Будет попап...</span>)}
+                     <Loader isLoading={loadStatusCategories === LOAD_STATUSES_TYPES.SET_LOADING || loadStatusGoods === LOAD_STATUSES_TYPES.SET_LOADING} />
+                     {loadStatusCategories === LOAD_STATUSES_TYPES.SET_ERROR || loadStatusGoods === LOAD_STATUSES_TYPES.SET_ERROR && (<span>Категория не найдена, вернуться назад</span>)}
 
                      {loadStatusCategories === LOAD_STATUSES_TYPES.SET_LOADED &&
                             <>
@@ -45,7 +57,7 @@ export const CategoryPage = () => {
                                                  {category!.label}
                                           </Breadcrumb.Item>
                                    </Breadcrumb>
-                                   <GoodCategory category={category as any} />
+                                   <GoodCategory label={category!.label} items={goods} />
                             </>
                      }
 
