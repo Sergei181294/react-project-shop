@@ -10,6 +10,7 @@ const getData = <T = unknown>(url: string, params: Record<string, string | numbe
 
        fullUrl.search = searchParams.toString();
 
+
        return fetch(fullUrl)
               .then((data) => {
                      if (data.ok) {
@@ -20,7 +21,7 @@ const getData = <T = unknown>(url: string, params: Record<string, string | numbe
               });
 }
 
-const add = (url: string, product:Good ) => {
+const add = (url: string, product: Good) => {
 
        fetch(new URL(url, BASE_URL), {
               method: 'PUT',
@@ -41,7 +42,9 @@ const add = (url: string, product:Good ) => {
 
 export const getCategories = (): Promise<{ categories: Category[] }> => getData("/api/categories");
 
-export const getGoods = (params?: { text?: string, ids?: string, categoryTypeIds?: string }): Promise<{ items: Good[]; total: number }> => getData("/api/goods", params);
+export const getGoods = (params?: { text?: string, ids?: string, categoryTypeIds?: string, limit?: number, offset?: number, minPrice?:number, maxPrice?:number}): Promise<{ items: Good[]; total: number }> => {
+       return getData("/api/goods", params)
+};
 
 export const getPopularCategories = (): Promise<{ category: Category, items: Good[] }[]> => getData("/api/popular_categories");
 

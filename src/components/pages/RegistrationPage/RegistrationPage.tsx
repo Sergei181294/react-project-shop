@@ -4,8 +4,7 @@ import css from "./registrationPage.module.css"
 import cancel from "assets/images/RegistrationPage/cancel.svg"
 import { Formik, Field } from "formik"
 import { useEffect } from "react"
-import { useSelector } from "react-redux"
-import { useAppDispatch } from "hooks/hooks"
+import { useAppDispatch, useAppSelector } from "hooks/hooks"
 import { getCategoriesFromStore } from "store/categories/selectors"
 import { actionsCategories } from "store/categories/slice"
 import dayjs from 'dayjs';
@@ -13,7 +12,7 @@ import { dataRegister } from './mockData'
 
 export const RegistrationPage = () => {
 
-       const categories = useSelector(getCategoriesFromStore)
+       const categories = useAppSelector(getCategoriesFromStore)
        const dispatch = useAppDispatch()
 
        useEffect(() => {

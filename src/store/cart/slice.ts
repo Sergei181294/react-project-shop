@@ -5,36 +5,34 @@ import { addToCart } from "api";
 const SLICE_NAME = "cart";
 
 export const sendToCart = createAsyncThunk(SLICE_NAME, async (product: Good) => {
-       const response = await addToCart(product)
-       return response;
+       await addToCart(product);
 })
 
 interface GoodInCart {
-       good: Good;
-       count: number;
-       id: string
-}[]
+       products: [{
+              good: Good;
+              count: number;
+              id: string
+       }]
+}
 
 const initialState: GoodInCart = {
-       good: { categoryTypeId: "", description: "", id: "", img: "", label: "", price: "" },
-       count: 0,
-       id: ""
+       products: [{
+              good: { categoryTypeId: "", description: "", id: "", img: "", label: "", price: "" },
+              count: 0,
+              id: ""
+       }]
 }
 
 export const { reducer, actions: sliceActions } = createSlice({
        name: SLICE_NAME,
        initialState,
-       reducers: {
-              
+       reducers: {},
+       extraReducers: (builder) => {
+              builder.addCase(sendToCart.fulfilled, (state, action) => {
+                     state.products.push()
+              });
        },
-       // extraReducers: (builder) => {
-       //        builder.addCase(addToCart.fulfilled, (state, action) => {
-       //               const { productId } = action.payload;
-       //               return [...state, productId];
-       //        });
-       // },
-
-
 })
 export const actions = { ...sliceActions }
 // export { reducer }

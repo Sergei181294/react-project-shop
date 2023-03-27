@@ -10,11 +10,13 @@ const goodsOnBack = createAsyncThunk(SLICE_NAME, getGoods)
 export interface GoodsStore {
        loadStatus: LOAD_STATUSES_TYPES;
        goods: Good[];
+       total: number;
 }
 
 const initialState: GoodsStore = {
        loadStatus: LOAD_STATUSES_TYPES.SET_UNKNOWN,
-       goods: []
+       goods: [],
+       total: 0,
 }
 const { reducer, actions } = createSlice({
        name: SLICE_NAME,
@@ -29,7 +31,9 @@ const { reducer, actions } = createSlice({
               });
               builder.addCase(goodsOnBack.fulfilled, (state, action) => {  
                      state.loadStatus =  LOAD_STATUSES_TYPES.SET_LOADED;  
-                     state.goods = action.payload.items;      
+                     state.goods = action.payload.items;
+                     state.total = action.payload.total;
+                    
               })
        }
 })

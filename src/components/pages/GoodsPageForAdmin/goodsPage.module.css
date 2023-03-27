@@ -1,0 +1,16 @@
+.searchAndSelectBlock {
+       display: flex;
+       justify-content: space-between;
+}
+
+.inputSearch {
+       width: 400px;
+}
+
+.selectCategories {
+       width: 400px;
+}
+
+.slider {
+       width: 400px;
+}

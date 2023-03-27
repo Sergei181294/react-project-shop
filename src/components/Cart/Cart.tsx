@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useAppSelector } from "../../hooks/hooks"
 import { Breadcrumb } from "antd"
 import { Link } from "react-router-dom"
 import css from "./cart.module.css"

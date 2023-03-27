@@ -5,3 +5,5 @@ import { Good } from "types";
 export const getLoadStatusGoods = (store: RootStore):GoodsStore["loadStatus"] => store.goods.loadStatus;
 
 export const getGoodsFromStore = (store: RootStore):GoodsStore["goods"] => store.goods.goods;
+
+export const getTotal = (store: RootStore):GoodsStore["total"] => store.goods.total;

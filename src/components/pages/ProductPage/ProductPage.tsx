@@ -4,24 +4,23 @@ import { Breadcrumb, Image, Divider, Button } from "antd";
 import { Loader } from "../../common/Loader";
 import { ShoppingCartOutlined, CheckOutlined } from "@ant-design/icons"
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { useAppDispatch } from "hooks/hooks";
+import { useAppDispatch, useAppSelector } from "hooks/hooks";
 import { getCategoriesFromStore } from "store/categories/selectors"
 import { getGoodsFromStore, getLoadStatusGoods } from "store/goods/selectors";
 import { actionsCategories } from "store/categories/slice"
 import { actionsGoods } from "store/goods/slice";
-import { actions } from "store/cart/slice";
 import { LOAD_STATUSES_TYPES } from "types";
+import { sendToCart } from "store/cart/slice";
 
 export const ProductPage = () => {
        const [btnValue, setBtnValue] = useState("Положить в корзину")
 
        const { id } = useParams();
        
-       const categories = useSelector(getCategoriesFromStore)
-       const goods = useSelector(getGoodsFromStore)
-       
-       const loadStatusGoods = useSelector(getLoadStatusGoods)
+       const categories = useAppSelector(getCategoriesFromStore)
+       const goods = useAppSelector(getGoodsFromStore)
+         
+       const loadStatusGoods = useAppSelector(getLoadStatusGoods)
        const dispatch = useAppDispatch()
 
        const fetchCategories = () => dispatch(actionsCategories.categoriesOnBack())
@@ -41,8 +40,7 @@ export const ProductPage = () => {
 
        const putInCartHandler = () => {
               setBtnValue("Уже в корзине");
-             
-              
+              // dispatch(sendToCart())
        }
 
        return (
@@ -84,10 +82,8 @@ export const ProductPage = () => {
                                                         <Link className={css.linkGoToCart} to="/api/cart">
                                                                {btnValue}
                                                         </Link>
-
                                                  </Button>}
                                           </div>
-
                                    </div>
                             </>
                      }
