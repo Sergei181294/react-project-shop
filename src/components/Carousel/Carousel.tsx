@@ -1,4 +1,4 @@
-import { Carousel, Button } from "antd";
+import { Carousel } from "antd";
 import { CarouselBlock } from "../CarouselBlock";
 import css from "./carousel.module.css"
 import img1 from "assets/images/img1.jpg"

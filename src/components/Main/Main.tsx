@@ -1,9 +1,8 @@
 import { Menu, GoodCategory, CarouselSlider } from ".."
 import { useEffect } from "react"
-
 import { useAppDispatch, useAppSelector } from "hooks/hooks"
-import { getPopularCategoriesFromStore } from "../../store/popularCategories/selectors"
-import { actionsPopularCategories } from "../../store/popularCategories/slice"
+import { getPopularCategoriesFromStore } from "store/popularCategories/selectors"
+import { actionsPopularCategories } from "store/popularCategories/slice"
 import css from "./main.module.css"
 
 

@@ -1,11 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom"
-import { Button, Divider, AutoComplete } from 'antd';
+import { Link, useNavigate } from "react-router-dom"
+import { Button, AutoComplete } from 'antd';
 import css from "./header.module.css"
 import { useState, useEffect, useCallback } from "react"
 import debounce from 'lodash/debounce';
 import { getGoods } from "api";
 import { Good } from "types";
+import { useAppSelector } from 'hooks/hooks';
+import { getIsAuth } from 'store/auth/selectors';
+import { getTotalCountItemsInCart } from 'store/cart/selectors';
 
 export interface Params {
        text: string;
@@ -13,7 +15,9 @@ export interface Params {
 
 export const Header = () => {
        const navigate = useNavigate()
-       
+       const isAuth = useAppSelector(getIsAuth)
+       const commonCount = useAppSelector(getTotalCountItemsInCart)
+
        const [params, setParams] = useState<Params>({ text: "" });
        const [goods, setGoods] = useState<Good[]>([{ categoryTypeId: "", description: "", id: "", img: "", label: "", price: "" }])
 
@@ -26,6 +30,11 @@ export const Header = () => {
        const updateParams = (value: string) => {
               setParams((prevParams) => ({ ...prevParams, text: value }));
        };
+
+       const handlerOut = () => {
+              localStorage.setItem("userToken", "")
+              window.location.reload()
+       }
 
        return (
               <>
@@ -45,19 +54,21 @@ export const Header = () => {
                                                  label: good.label
                                           }))}
                                           filterOption={true}
-                                          onSelect={(_, {key}) => navigate(`/goods/${key}`)}
+                                          onSelect={(_, { key }) => navigate(`/goods/${key}`)}
                                           onChange={updateParams}
                                    />
-                                   <Link to="/login">
-                                          <Button className={css.searchButton}>Войти</Button>
-                                   </Link>
+                                   {isAuth && <Button className={css.searchButton} onClick={handlerOut}>Выйти</Button>}
+                                   {!isAuth && <Link to="/login"><Button className={css.searchButton}>Войти</Button> </Link>}
 
-                                   <Link to="/api/cart" className={css.basket}>
-                                          <p className={css.bas}>Корзина</p>
+                                   {isAuth && <Link to="/api/cart" className={css.basket}>
+                                          <span className={css.bas}>Корзина</span>
+                                          {commonCount > 0 && <span className={css.goodsCount}>{commonCount}</span>}
                                    </Link>
+                                   }
+                                   
+
                             </div>
                      </div>
-                     <Divider className={css.devider} />
               </>
        )
 

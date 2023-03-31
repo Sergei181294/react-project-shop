@@ -1,4 +1,3 @@
-
 import css from "./footer.module.css"
 import facebookLogo from "assets/images/footer/facebook.png";
 import instaLogo from "assets/images/footer/insta.png";

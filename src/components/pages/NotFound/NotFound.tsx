@@ -1,10 +1,22 @@
-import { Link } from "react-router-dom"
+import { FC } from "react";
+import { useNavigate } from "react-router-dom"
 import css from "./notFound.module.css"
 
-export const NotFound = () => {
+export interface NotFoundProps {
+      text: string;
+}
+
+export const NotFound: FC<NotFoundProps> = ({text}) => {
+
+      const navigate = useNavigate();
+      const goBack = () => navigate(-1);
+
       return (
-       <div>
-              <h2 className={css.notFound}>Категория не найдена, вернуться <Link to="/">назад</Link></h2>
-       </div>
-      ) 
+            <div>
+                  <h2 className={css.notFound}>
+                        {text }
+                        <button onClick={goBack} className={css.goBackBtn}>назад</button></h2>
+                  
+            </div>
+      )
 }

@@ -1,7 +1,8 @@
 import type { RootStore } from "..";
-import { Good } from "types";
+import { Cart } from "./slice";
 
 
-// export const getTotalCountItemsInCart = (store: RootStore):number => store.cart;
+export const getTotalCountItemsInCart = (store: RootStore):Cart["commonCount"] => store.cart.commonCount;
 
-// export const getGoodsItemsFromCart = (store: RootStore):Good[] => store.cart
+export const getGoodsFromCart = (store: RootStore):Cart["goods"] => store.cart.goods
+

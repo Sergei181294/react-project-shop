@@ -21,7 +21,7 @@ export const App = () => {
             <Route path="categories/:type" element={<CategoryPage />} />
             <Route path="goods" element={<GoodsPage />} />
             <Route path="goods/:id" element={<ProductPage />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFound text="Данная страница отсутствует на нашем сайте. Вернуться "/>} />
           </Routes>
         </div>
         <Footer />
