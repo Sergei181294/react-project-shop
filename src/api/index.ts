@@ -3,13 +3,18 @@ import { GoodInCart } from "store/cart/slice";
 
 const BASE_URL = "http://localhost:3000/";
 
-const getData = <T = unknown>(url: string, params: Record<string, string | number> = {}): Promise<T> => {
+const get = <T = unknown>(url: string, params: Record<string, string | number> = {}): Promise<T> => {
        const searchParams = new URLSearchParams({ ...params } as Record<string, string>);
 
        const fullUrl = new URL(url, BASE_URL);
 
        fullUrl.search = searchParams.toString();
-       return fetch(fullUrl)
+       return fetch(fullUrl, {
+              // headers: {
+              //        "Content-Type": "application/json",
+              //        Authorization: `Bearer ${localStorage.getItem("userToken")}`
+              // },
+       })
               .then((data) => {
                      if (data.ok) {
                             return data.json();
@@ -18,41 +23,52 @@ const getData = <T = unknown>(url: string, params: Record<string, string | numbe
               });
 }
 
-const postData = (url: string, body: Record<string, unknown>) => {
+const post = (url: string, body: Record<string, unknown>) => {
        const fullUrl = new URL(url, BASE_URL);
        return fetch(fullUrl, {
               method: "POST",
               body: JSON.stringify(body),
+              // headers: {
+              //        "Content-Type": "application/json",
+              //        Authorization: `Bearer ${localStorage.getItem("userToken")}`
+              // },
        }).then((data) => {
-              if (data.ok) return data.json();
-       })    
-};
-
-const putInCart = (url:string, body: Record<string, unknown>) => {
-       return fetch(new URL(url, BASE_URL), {
-              method:"PUT",
-              body: JSON.stringify(body),
-       })
-       .then((data => {
-              if(data.ok){
+              if (data.ok) {
                      return data.json()
               }
-              throw new Error("oops")
-       }))
+              throw new Error("Что-то пошло не так")
+       })
+};
+
+const put = (url: string, body: Record<string, unknown>) => {
+       return fetch(new URL(url, BASE_URL), {
+              method: "PUT",
+              body: JSON.stringify(body),
+              // headers: {
+              //        "Content-Type": "application/json",
+              //        Authorization: `Bearer ${localStorage.getItem("userToken")}`
+              // },
+       })
+              .then((data => {
+                     if (data.ok) {
+                            return data.json()
+                     }
+                     throw new Error("oops")
+              }))
 }
 
 
-export const getCategories = (): Promise<{ categories: Category[] }> => getData("/api/categories");
+export const getCategories = (): Promise<{ categories: Category[] }> => get("/api/categories");
 
 export const getGoods = (params?: { text?: string, ids?: string, categoryTypeIds?: string, limit?: number, offset?: number, minPrice?: number, maxPrice?: number, sortBy?: keyof Good, sortDirection?: 'asc' | 'desc' }): Promise<{ items: Good[]; total: number }> => {
-       return getData("/api/goods", params)
+       return get("/api/goods", params)
 };
-export const getPopularCategories = (): Promise<{ category: Category, items: Good[] }[]> => getData("/api/popular_categories");
+export const getPopularCategories = (): Promise<{ category: Category, items: Good[] }[]> => get("/api/popular_categories");
 
-export const registration = (body: any): any => postData("/api/registration", body);
+export const registration = (body: any): any => post("/api/registration", body);
 
-export const login = (credentials:{login: string; password: string}): Promise<{login: string, token:string}> => postData("/api/login", credentials)
+export const login = (credentials: { login: string; password: string }): Promise<{ login: string, token: string }> => post("/api/login", credentials)
 
-export const addToCart = (body:{good?: Good, count?:number, id?:string}): Promise<GoodInCart[]> => putInCart("/api/cart", body)
+export const addToCart = (body: { good?: Good, count?: number, id?: string }): Promise<GoodInCart[]> => put("/api/cart", body)
 
-export const getCart = ():Promise<GoodInCart[]> => getData("/api/cart")
+export const getCart = (): Promise<GoodInCart[]> => get("/api/cart")

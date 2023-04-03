@@ -16,7 +16,7 @@ import { getIsAuth } from "store/auth/selectors"
 export type Params = {
        limit: number,
        offset: number,
-       categoryTypeIds: string,
+       categoryTypeIds?: string,
        minPrice: number,
        maxPrice: number,
        text: string,
@@ -59,7 +59,8 @@ export const GoodsPage = () => {
 
 
        useEffect(() => {
-              fetchGoods(params);
+              const { categoryTypeIds, ...restParams } = params;
+              fetchGoods({ ...restParams, ...(categoryTypeIds !== '0' && { categoryTypeIds }) });
               window.scrollTo(0, 0)
        }, [params])
 
@@ -110,11 +111,9 @@ export const GoodsPage = () => {
        ]
 
        const handleChangeSelect = (value: string) => {
-              if (value === "0") {
-                     setParams((prevParams) => ({ ...prevParams, page: 1, categoryTypeIds: "1,2,3,4,5,6,7,8,9,10,11" }))
-              } else {
-                     setParams((prevParams) => ({ ...prevParams, page: 1, categoryTypeIds: value }))
-              }
+
+              setParams((prevParams) => ({ ...prevParams, page: 1, categoryTypeIds: value }))
+
        };
 
        const onSearchHandler = (value: string) => {
@@ -134,7 +133,7 @@ export const GoodsPage = () => {
        }
 
        const defaultBtnHandler = () => {
-              setParams((prevParams) => ({ ...prevParams, categoryTypeIds: "1,2,3,4,5,6,7,8,9,10,11", minPrice: 0, maxPrice: 1000, text: "", sortBy: "price", sortDirection: "asc", }))
+              setParams((prevParams) => ({ ...prevParams, categoryTypeIds: "0", minPrice: 0, maxPrice: 1000, text: "", sortBy: "price", sortDirection: "asc", }))
        }
 
        const handleRowNavigate = (record: { id: string }) => {
@@ -167,7 +166,7 @@ export const GoodsPage = () => {
                                                                       value: category.id,
                                                                       label: category.label
                                                                }))}
-                                                               value={params.categoryTypeIds === "1,2,3,4,5,6,7,8,9,10,11" ? "Все товары" : params.categoryTypeIds}
+                                                               value={params.categoryTypeIds === "0" ? "Все товары" : params.categoryTypeIds}
                                                         />
                                                  </div>
                                                  <div>

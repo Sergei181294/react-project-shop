@@ -4,7 +4,7 @@ import { Good, LOAD_STATUSES_TYPES } from "types"
 
 const SLICE_NAME = "goods";
 
-const goodsOnBack = createAsyncThunk(SLICE_NAME, getGoods)
+export const goodsOnBack = createAsyncThunk(SLICE_NAME, getGoods)
 
 
 export interface GoodsStore {

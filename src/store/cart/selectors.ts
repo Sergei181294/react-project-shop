@@ -1,8 +1,13 @@
 import type { RootStore } from "..";
 import { Cart } from "./slice";
 
+export const getGoodsFromCart = (store: RootStore): Cart["goods"] => store.cart.goods
 
-export const getTotalCountItemsInCart = (store: RootStore):Cart["commonCount"] => store.cart.commonCount;
+export const getCommonCount = (store: RootStore) => {
+       return getGoodsFromCart(store).reduce((acc, obj) => acc + obj.count, 0)
+}
 
-export const getGoodsFromCart = (store: RootStore):Cart["goods"] => store.cart.goods
+export const getCommonPrice = (store: RootStore) => {
+       return getGoodsFromCart(store).reduce((acc, obj) => acc + (obj.count * +obj.good.price), 0)
+}
 

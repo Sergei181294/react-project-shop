@@ -1,18 +1,20 @@
-import { Input, Button, Radio, Switch, DatePicker } from "antd"
+import { Input, Button, Radio, Switch, DatePicker, Modal } from "antd"
 import css from "./registrationPage.module.css"
 import cancel from "assets/images/RegistrationPage/cancel.svg"
 import { Formik, Field } from "formik"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useAppDispatch, useAppSelector } from "hooks/hooks"
 import { getCategoriesFromStore } from "store/categories/selectors"
 import { actionsCategories } from "store/categories/slice"
 import dayjs from 'dayjs';
 import { dataRegister, registrationFields } from './mockData'
-import { registrationThunk } from "store/registration/slice"
 import { useNavigate, Link } from "react-router-dom"
 import { getIsAuth } from "store/auth/selectors"
+import { registration } from "api"
 
 export const RegistrationPage = () => {
+
+       const [isOpenModal, setIsOpenModal] = useState(false)
 
        const categories = useAppSelector(getCategoriesFromStore)
        const dispatch = useAppDispatch()
@@ -21,6 +23,12 @@ export const RegistrationPage = () => {
        useEffect(() => {
               dispatch(actionsCategories.categoriesOnBack());
        }, [])
+
+       const handleOk = () => {
+              setIsOpenModal(false);
+              navigate("/login")
+       };
+
 
        return (
 
@@ -36,7 +44,6 @@ export const RegistrationPage = () => {
                                           initialValues={dataRegister.initialValues}
                                           validateOnBlur={false}
                                           validateOnChange={false}
-
                                           onSubmit={(values, { resetForm }) => {
 
                                                  const data = Object.keys(values).reduce((acc: {}, key: string) => {
@@ -46,9 +53,10 @@ export const RegistrationPage = () => {
                                                         }
                                                         return acc;
                                                  }, {})
-                                                 dispatch(registrationThunk({ ...data, login: values.email, secret: { type: values.secretQuestion, answer: values.answer } }))
+                                                 registration({ ...data, login: values.email, secret: { type: values.secretQuestion, answer: values.answer } })
+                                                 
                                                  resetForm()
-                                                 navigate("/login")
+                                                 setIsOpenModal(true)
                                           }}
                                           validationSchema={dataRegister.validation}
                                    >
@@ -153,6 +161,9 @@ export const RegistrationPage = () => {
                                                                       >
                                                                              Зарегистрироваться
                                                                       </Button>
+                                                                      <Modal className={css.modal}  open={isOpenModal} onOk={handleOk} onCancel={handleOk} >
+                                                                             <p className={css.congratulate}>Поздравляем! Вы успешно зарегистрированы!</p>      
+                                                                      </Modal>
                                                                       <Link to="/">
                                                                              <Button className={css.cancelBtn}>Отмена</Button>
                                                                       </Link>
@@ -162,8 +173,8 @@ export const RegistrationPage = () => {
                                                  </form>
                                           )}
                                    </Formik>
-                            </div>
+                            </div >
                      }
-              </div>
+              </div >
        )
 }

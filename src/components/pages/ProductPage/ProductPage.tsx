@@ -18,7 +18,6 @@ import { getIsAuth } from "store/auth/selectors";
 
 export const ProductPage = () => {
        const [btnValue, setBtnValue] = useState("Положить в корзину")
-       const [good, setGood] = useState<Good[]>([])
 
        const { id } = useParams();
 
@@ -40,13 +39,6 @@ export const ProductPage = () => {
               window.scrollTo(0, 0)
        }, [id])
 
-       useEffect(() => {
-              if (id) {
-                     getGoods({ ids: id }).then(res => setGood(res.items))
-              }
-       }, [])
-
-
        const category = categories.find((category) => category.id === goods[0]?.categoryTypeId)
        const myGoodInCart = useAppSelector(getGoodsFromCart)
        const countOneProduct = myGoodInCart.find((good) => good.id === id)?.count ?? 0;
@@ -54,7 +46,7 @@ export const ProductPage = () => {
 
        const putInCartHandler = () => {
               setBtnValue("Уже в корзине");
-              dispatch(addGoodInCart({ good: good[0], count: countOneProduct + 1 }))
+              dispatch(addGoodInCart({ good: goods[0], count: countOneProduct + 1 }))
        }
 
        return (

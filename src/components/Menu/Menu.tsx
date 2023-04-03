@@ -21,21 +21,20 @@ export const Menu = () => {
 
               <ul className={css.list}>
                      {categories.map((category) =>
-                            <>
-                                   <li key={category.id}>
-                                          <Link to={`/categories/${category.type}`} className={css.categoriesLink}>
-                                                 <p className={css.categories}>{category.label}</p>
-                                          </Link>
-                                   </li>
-                                   {isAuth && 
-                                   <li>
-                                          <Link to={`/goods`} className={css.categoriesLink}>
-                                                 <p className={css.categories}>Все товары</p>
-                                          </Link>
-                                   </li>}
 
-                            </>
+                            <li key={category.id}>
+                                   <Link to={`/categories/${category.type}`} className={css.categoriesLink}>
+                                          <p className={css.categories}>{category.label}</p>
+                                   </Link>
+                            </li>
+
                      )}
+                     {isAuth &&
+                            <li>
+                                   <Link to={`/goods`} className={css.categoriesLink}>
+                                          <p className={css.categories}>Все товары</p>
+                                   </Link>
+                            </li>}
               </ul>
        )
 

@@ -1,6 +1,5 @@
 import type { RootStore } from "..";
 import { CategoriesStore } from "./slice";
-import { Category } from "types";
 
 export const getLoadStatusCategories = (store: RootStore):CategoriesStore["loadStatus"] => store.categories.loadStatus;
 

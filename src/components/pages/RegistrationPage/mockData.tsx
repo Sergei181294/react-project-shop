@@ -18,8 +18,8 @@ export const dataRegister: DataRegisterType = {
               { name: 'name', label: 'Имя', type: 'text', css: 'inputName' },
               { name: 'surname', label: 'Фамилия', type: 'text', css: 'inputName' },
               { name: 'email', label: 'Email', type: 'text', css: 'inputName' },
-              { name: 'password', label: 'Password', type: 'password', css: 'inputName' },
-              { name: 'confirmPassword', label: 'Confirm Password', type: 'password', css: 'inputName' },
+              { name: 'password', label: 'Пароль', type: 'password', css: 'inputName' },
+              { name: 'confirmPassword', label: 'Подтвердите пароль', type: 'password', css: 'inputName' },
 
        ],
        fieldsChecking: [
@@ -42,7 +42,6 @@ export const dataRegister: DataRegisterType = {
 
        },
        validation: validationsShema,
-       
 }
 
 type InitialValuesDataType = {

@@ -1,5 +1,6 @@
 .cartWrapper {
         display: flex;
+        justify-content: space-between;
 }
 
 .listGoodsInCart {

@@ -17,10 +17,7 @@ export interface PopularCategoriesStore {
 
  const initialState: PopularCategoriesStore = {
        loadStatus: LOAD_STATUSES_TYPES.SET_UNKNOWN,
-       data: [{
-              category: { id: "", label: "", type: "" },
-              items: []
-       }]
+       data: []
 
 }
 const { reducer, actions } = createSlice({

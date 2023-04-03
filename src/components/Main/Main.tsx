@@ -30,6 +30,7 @@ export const Main = () => {
                             items={ category.items}
                             type={category.category.type}
                      />)}
+                     <a className={css.linkToHeader} href="#header">Наверх</a>
               </>
        )
 }

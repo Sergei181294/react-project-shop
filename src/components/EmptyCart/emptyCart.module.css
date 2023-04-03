@@ -1,0 +1,18 @@
+.emptyCartWrapper {
+       margin: 0 auto;
+}
+
+.emptyCart {
+       padding: 20px 0;
+       width: 700px;
+       text-align: center;
+}
+
+
+.imgWrapper{
+       text-align: center;
+}
+
+.imgCart {
+       width: 500px;
+}

@@ -3,7 +3,7 @@ import { login } from "api";
 
 const SLICE_NAME = "auth";
 
-export const loginThunk = createAsyncThunk(`${SLICE_NAME}/loginThunk`, async (credentials: { login: string; password: string }) => {
+const loginThunk = createAsyncThunk(`${SLICE_NAME}/loginThunk`, async (credentials: { login: string; password: string }) => {
        const response = await login(credentials);
        localStorage.setItem("userToken", response.token)
        return response
@@ -11,12 +11,15 @@ export const loginThunk = createAsyncThunk(`${SLICE_NAME}/loginThunk`, async (cr
 
 export interface GoodsStore {
        isAuth: boolean;
-       userData: { login: string; token: string }
+       login: string;
+       token: string
 }
+
 
 const initialState: GoodsStore = {
        isAuth: Boolean(localStorage.getItem("userToken")),
-       userData: { login: "", token: "" }
+       login: "",
+       token: ""
 }
 
 
@@ -28,7 +31,9 @@ const slice = createSlice({
        extraReducers: (builder) => {
               builder.addCase(loginThunk.fulfilled, (state, action) => {
                      state.isAuth = true
-                     state.userData = action.payload
+                     state.login = action.payload.login
+                     state.token = action.payload.token
+                     
               });
        },
 })

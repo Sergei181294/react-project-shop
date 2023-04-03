@@ -1,28 +1,31 @@
-import { useAppSelector,useAppDispatch } from "hooks/hooks"
+import { useAppSelector, useAppDispatch } from "hooks/hooks"
 import { Breadcrumb, Divider, Image, Button } from "antd"
-import { Link,useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import css from "./cart.module.css"
-import { getGoodsFromCart, getTotalCountItemsInCart } from "store/cart/selectors"
-import { useEffect } from "react"
+import { getGoodsFromCart, getCommonCount, getCommonPrice } from "store/cart/selectors"
+import { useEffect, useMemo, useCallback } from "react"
 import { actions, GoodInCart } from "store/cart/slice"
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons"
 import { getIsAuth } from "store/auth/selectors"
+import { EmptyCart } from ".."
+
 
 
 
 export const Cart = () => {
 
-       const commonCount = useAppSelector(getTotalCountItemsInCart)
-       const goodsInCart = useAppSelector(getGoodsFromCart)
-
-       const commonPrice = goodsInCart.reduce((acc, obj) => acc + (obj.count * +obj.good.price), 0)
-
        const dispatch = useAppDispatch()
        const navigate = useNavigate()
        const isAuth = useAppSelector(getIsAuth)
 
+       const goodsInCart = useAppSelector(getGoodsFromCart);
+       const commonCount = useAppSelector(getCommonCount);
+       const commonPrice = useAppSelector(getCommonPrice)
+
+      
+
        const addProduct = (good: GoodInCart) => {
-              dispatch(actions.addGoodInCart({ ...good, count: good.count + 1 }))
+             dispatch(actions.addGoodInCart({ ...good, count: good.count + 1 }))
        }
 
        const deleteProduct = (good: GoodInCart) => {
@@ -45,7 +48,7 @@ export const Cart = () => {
                                    </Breadcrumb>
                                    <div className={css.cartWrapper}>
                                           {goodsInCart.length === 0 ?
-                                                 <h2 className={css.emptyCart}>В корзине пусто. Чтобы найти товары, используйте поиск или выберите товары из просмотренных ранее.</h2>
+                                                 <EmptyCart />
                                                  :
                                                  <>
                                                         <div>
@@ -55,7 +58,7 @@ export const Cart = () => {
                                                                                     <li key={good.good.id}>
                                                                                            <div className={css.goodInCart}>
                                                                                                   <div className={css.infoWrapper}>
-                                                                                                         <Image className={css.icon} width={150} height={150} src={good.good.img} alt="icon" />
+                                                                                                         <Image className={css.icon} width={200} height={150} src={good.good.img} alt="icon" />
                                                                                                          <div className={css.blockInfoGoodInCart}>
                                                                                                                 <p className={css.name}>{good.good.label}</p>
                                                                                                                 <p className={css.description}>{good.good.description}</p>
@@ -78,8 +81,10 @@ export const Cart = () => {
                                                         <div className={css.cartPriceBlock}>
                                                                <h2>Количество товаров в корзине: {commonCount}</h2>
                                                                <h2>Оформить заказ на сумму: {commonPrice} руб.</h2>
+
                                                         </div>
-                                                 </>}
+                                                 </>
+                                          }
 
                                    </div>
                             </>

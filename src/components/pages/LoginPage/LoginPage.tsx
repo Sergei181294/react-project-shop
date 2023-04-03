@@ -1,23 +1,33 @@
 import css from "./loginPage.module.css"
-import { Input, Button } from "antd"
+import { Input, Button, notification } from "antd"
 import { Link, useNavigate } from "react-router-dom"
 import { Formik } from "formik"
 import cancel from "assets/images/RegistrationPage/cancel.svg"
 import * as yup from "yup"
-import { useAppDispatch } from "hooks/hooks"
-import { loginThunk } from "store/auth/slice"
+import { useAppDispatch, useAppSelector } from "hooks/hooks"
+import { actions } from "store/auth/slice"
+import { getIsAuth } from "store/auth/selectors"
 
 export const LoginPage = () => {
+
+       const isAuth = useAppSelector(getIsAuth)
 
        const validationsShema = yup.object().shape({
               login: yup.string().required("Обязательное поле*"),
               password: yup.string().required("Обязательное поле*")
-
        })
        const navigate = useNavigate()
 
        const dispatch = useAppDispatch()
-       
+
+       const showNotification = (type: string, message: string, description: string) => {
+              // @ts-ignore
+              notification[type]({
+                     message: message,
+                     description: description,
+                     placement: "topRight"
+              })
+       }
 
        return (
               <div className={css.authPageBody}>
@@ -35,16 +45,14 @@ export const LoginPage = () => {
                                    }}
                                    validateOnBlur={false}
                                    validateOnChange={false}
-                                   onSubmit={(values, {resetForm}) => {
-                                          dispatch(loginThunk({login:values.login, password:values.password}))
-                                          resetForm()
-                                          navigate("/")
-
+                                   onSubmit={(values) => {
+                                          dispatch(actions.loginThunk({ login: values.login, password: values.password }))
+                                                 .then(data => { data.payload === undefined ? showNotification("error", "Ошибка", "Неверный логин или пароль") : navigate("/") })
                                    }}
                                    validationSchema={validationsShema}
                             >
 
-                                   {({ values, errors, handleSubmit, handleChange, setFieldValue }) => (
+                                   {({ errors, handleSubmit, handleChange }) => (
                                           <form onSubmit={handleSubmit}>
                                                  <div className={css.form}>
                                                         <Input
@@ -52,13 +60,13 @@ export const LoginPage = () => {
                                                                type="text"
                                                                name="login"
                                                                onChange={handleChange}
-                                                               
+
                                                                placeholder="Введите логин"
                                                         />
                                                         {errors.login && <p className={css.error}>{errors.login}</p>}
                                                  </div>
                                                  <div className={css.form}>
-                                                        <Input
+                                                        <Input.Password
                                                                className={css.inputForPassword}
                                                                type="password"
                                                                name="password"
@@ -67,8 +75,8 @@ export const LoginPage = () => {
                                                         />
                                                         {errors.login && <p className={css.error}>{errors.login}</p>}
                                                  </div>
-                                                <Button className={css.authPageBtn} htmlType="submit">Войти</Button>
-                                               
+                                                 <Button className={css.authPageBtn} htmlType="submit">Войти</Button>
+
                                                  <br />
                                           </form>)}
                             </Formik>

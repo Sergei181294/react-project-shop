@@ -20,13 +20,11 @@ export interface GoodInCart {
 
 export interface Cart {
        goods: GoodInCart[];
-       commonCount: number;
        loadStatus: string;
 }
 
 const initialState: Cart = {
        goods: [],
-       commonCount: 0,
        loadStatus: LOAD_STATUSES_TYPES.SET_UNKNOWN,
 }
 
@@ -43,7 +41,6 @@ export const slice = createSlice({
               })
               builder.addCase(getCartData.fulfilled, (state, action) => {
                      state.loadStatus = LOAD_STATUSES_TYPES.SET_LOADED
-                     state.commonCount = state.goods.reduce((acc, obj) => acc + obj.count, 0)
                      state.goods = action.payload
               })
               builder.addCase(addGoodInCart.pending, (state, action) => {

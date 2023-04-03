@@ -11,14 +11,16 @@ const carouselArray = [
               alt: "presents",
               title: "Книги со скидкой до 20%",
               subtitle: "Издательство «АСТ»",
-              buttonText: "Выбрать товары"
+              buttonText: "Выбрать товары",
+              link: "/categories/books",
        },
        {
               src: img2,
               alt: "books",
               title: "Подарки со скидками до 50%",
-              subtitle: "Косметика, техника",
-              buttonText: "Выбрать товары"
+              subtitle: "Косметика, парфюм",
+              buttonText: "Выбрать товары",
+              link: "/categories/cosmetics",
        }
 ]
 
@@ -32,6 +34,7 @@ export const CarouselSlider = () => {
                             title={item.title}
                             subtitle={item.subtitle}
                             btnValue={item.buttonText}
+                            link={item.link}
                      />
                      )}
               </Carousel>
