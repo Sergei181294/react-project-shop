@@ -1,7 +1,7 @@
 .footer {
        display: flex;
        justify-content: space-between;
-       background-color: rgb(211, 211, 211);
+       background-color: rgb(255, 255, 255);
        height: 170px;
        padding: 20px;
 }
@@ -43,7 +43,7 @@
        text-decoration: none;
        font-size: 14px;
        color: black;
-       background-image: url(../../assets/images/footer/googlePlay.png);
+       background-image: url(assets/images/footer/googlePlay.png);
        background-repeat: no-repeat;
        background-position: left 5px center;
 }
@@ -55,7 +55,7 @@
        text-decoration: none;
        font-size: 14px;
        color: black;
-       background-image: url(../../assets/images/footer/appStore.png);
+       background-image: url(assets/images/footer/appStore.png);
        background-repeat: no-repeat;
        background-position: left 5px center;
 }
@@ -67,7 +67,7 @@
        text-decoration: none;
        font-size: 14px;
        color: black;
-       background-image: url(../../assets/images/footer/appGallery.png);
+       background-image: url(assets/images/footer/appGallery.png);
        background-repeat: no-repeat;
        background-position: left 5px center;
 }

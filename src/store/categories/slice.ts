@@ -1,18 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getCategories } from "../../api";
-import { Category, LOAD_STATUSES_TYPES } from "../../types"
+import { getCategories } from "api";
+import { Category, LOAD_STATUSES_TYPES } from "types"
 
 const SLICE_NAME = "categories";
 
 const categoriesOnBack = createAsyncThunk(SLICE_NAME, getCategories)
 
 
-interface GoodsStore {
+export interface CategoriesStore {
        loadStatus: LOAD_STATUSES_TYPES;
        categories: Category[];
 }
 
-const initialState: GoodsStore = {
+const initialState: CategoriesStore = {
        loadStatus: LOAD_STATUSES_TYPES.SET_UNKNOWN,
        categories: []
 }
@@ -29,7 +29,7 @@ const { reducer, actions } = createSlice({
               });
               builder.addCase(categoriesOnBack.fulfilled, (state, action) => {
                      state.loadStatus = LOAD_STATUSES_TYPES.SET_LOADED;
-                     state.categories = action.payload;
+                     state.categories = action.payload.categories;
               })
        }
 })

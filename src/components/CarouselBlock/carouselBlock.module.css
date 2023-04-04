@@ -21,7 +21,7 @@
 .subtitleBook {
        position: absolute;
        top: 320px;
-       left: 418px;
+       left: 43%;
        color: white;
        font-size: 22px;
        font-weight: 400;
@@ -32,7 +32,7 @@
        height: 50px;
        position: absolute;
        bottom: 80px;
-       left: 460px;
+       left: 43%;
        font-weight: 500;
        font-size: 18px;
        background-color: yellow;
@@ -41,7 +41,5 @@
 }
 
 .btnCarouselBook:hover {
-       bottom: 165px;
-       background-color: orange;
-       
+       background-color: orange;    
 }

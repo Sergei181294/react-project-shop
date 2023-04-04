@@ -1,6 +1,62 @@
 .cartWrapper {
         display: flex;
+        justify-content: space-between;
 }
+
 .listGoodsInCart {
         list-style: none;
+}
+
+.icon {
+        width: 150px;
+        height: 150px;
+}
+
+.goodInCart {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+
+}
+
+.blockInfoGoodInCart {
+        margin-left: 20px;
+}
+
+.name {
+        margin: 0;
+}
+
+.description {
+        margin-top: 5px 0 0;
+        font-size: 14px;
+        color: gray;
+}
+
+.price {
+        font-size: 14px;
+}
+
+.infoWrapper {
+        display: flex;
+}
+
+.blockButton {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+}
+
+.blockButton>p {
+        margin: 0;
+}
+
+.emptyCart {
+        padding: 20px 0;
+}
+
+.cartPriceBlock {
+        padding: 20px 25px;
+        margin: 0 0 0 20px;
+        border: 1px solid black;
 }

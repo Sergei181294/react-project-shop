@@ -1,0 +1,38 @@
+.searchAndSelectBlock {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       grid-column-gap: 20px;
+       grid-row-gap: 20px;
+
+}
+
+.inputSearch {
+       width: 400px;
+}
+
+.selectCategories {
+       width: 400px;
+}
+
+.slider {
+       width: 400px;
+}
+
+.titleForSort {
+       margin: 10px 0 5px;
+       font-size: 14px;
+       font-weight: 600;
+}
+
+.tableForGoods {
+       margin-top: 25px;
+}
+
+.filterOption {
+       width: 400px;
+}
+
+.defaultBtn {
+       width: 200px;
+}
+

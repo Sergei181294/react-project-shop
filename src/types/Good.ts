@@ -1,4 +1,5 @@
 export interface Good {
+       key?: string;
        categoryTypeId: string;
        description: string;
        id: string;

@@ -1,17 +1,18 @@
 import { Menu, GoodCategory, CarouselSlider } from ".."
 import { useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { getCategoriesFromStore } from "../../store/categories/selectors"
-import { actionsCategories } from "../../store/categories/slice"
+import { useAppDispatch, useAppSelector } from "hooks/hooks"
+import { getPopularCategoriesFromStore } from "store/popularCategories/selectors"
+import { actionsPopularCategories } from "store/popularCategories/slice"
 import css from "./main.module.css"
 
 
 export const Main = () => {
 
-       const categories = useSelector(getCategoriesFromStore)
-       const dispatch = useDispatch()
+       const categories = useAppSelector(getPopularCategoriesFromStore)
+       const dispatch = useAppDispatch()
 
-       const fetchCategories = () => dispatch(actionsCategories.categoriesOnBack() as any)
+       const fetchCategories = () => dispatch(actionsPopularCategories.popularCategoriesOnBack())
+
        useEffect(() => {
               fetchCategories();
        }, [])
@@ -23,7 +24,13 @@ export const Main = () => {
                             <CarouselSlider />
                      </div>
 
-                     {categories.map(category => <GoodCategory key={category.id} category={category} />)}
+                     {categories.map(category => <GoodCategory
+                            key={category.category.id}
+                            label={category.category.label}
+                            items={ category.items}
+                            type={category.category.type}
+                     />)}
+                     <a className={css.linkToHeader} href="#header">Наверх</a>
               </>
        )
 }

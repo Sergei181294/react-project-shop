@@ -1,7 +1,6 @@
 import type { RootStore } from "..";
-import { LOAD_STATUSES_TYPES } from "../../types";
-import { Category } from "../../types";
+import { CategoriesStore } from "./slice";
 
-export const getLoadStatusCategories = (store: RootStore):LOAD_STATUSES_TYPES => store.categories.loadStatus;
+export const getLoadStatusCategories = (store: RootStore):CategoriesStore["loadStatus"] => store.categories.loadStatus;
 
-export const getCategoriesFromStore = (store: RootStore):Category[] => store.categories.categories;
+export const getCategoriesFromStore = (store: RootStore):CategoriesStore["categories"] => store.categories.categories;

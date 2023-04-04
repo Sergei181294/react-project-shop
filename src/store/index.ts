@@ -3,11 +3,15 @@ import { combineReducers } from "redux"
 import { reducer as goodsReducer } from "./goods/slice"
 import { reducer as categoriesReducer } from "./categories/slice"
 import { reducer as cartReducer } from "./cart/slice"
+import { reducer as popularCategoriesReducer } from "./popularCategories/slice"
+import { reducer as loginReducer } from "./auth/slice"
 
 const reducer = combineReducers({
        goods: goodsReducer,
        categories: categoriesReducer,
        cart: cartReducer,
+       popularCategories: popularCategoriesReducer,
+       login: loginReducer
 });
 
 export const store = configureStore({
@@ -17,3 +21,5 @@ export const store = configureStore({
 
 
 export type RootStore = ReturnType<typeof store.getState>
+
+export type AppDispatch = typeof store.dispatch

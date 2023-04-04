@@ -1,0 +1,62 @@
+.authPageBody {
+       min-height: 100%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       padding: 30px 10px;
+       background-color: orange;
+}
+
+.authPageContent {
+       background-color: #FFFFFF;
+       width: 400px;
+       padding: 10px;
+       position: relative;
+}
+
+.authPageClose {
+       position: absolute;
+       right: 15px;
+       top: 15px;
+}
+
+.authPageTitle {
+       margin: 10px 0 0 0;
+       font-size: 36px;
+       font-weight: 700;
+       color: #ffa600;
+       text-align: center;
+}
+
+.authPageSubtitle {
+       margin: 10px 0 0;
+       font-size: 16px;
+       font-weight: 600;
+       color: #ffa600;
+       text-align: center;
+}
+
+.authPageBtn {
+       width: 380px;
+       margin-top: 10px;
+       background-color: #ea7308;
+       color: #FFFFFF;
+       font-size: 16px;
+       border-radius: 40px;
+       border: none;
+}
+
+.inputForLogin {
+       margin-top: 20px;
+}
+
+.inputForPassword {
+       margin-top: 10px;
+}
+
+.form p {
+       font-size: 14px;
+       font-weight: 600;
+       color: red;
+       margin-top: 5px;
+}
