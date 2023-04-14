@@ -18,7 +18,7 @@ const initialState: GoodsStore = {
        goods: [],
        total: 0,
 }
-const { reducer, actions } = createSlice({
+export const { reducer, actions } = createSlice({
        name: SLICE_NAME,
        initialState,
        reducers: {},
@@ -38,6 +38,6 @@ const { reducer, actions } = createSlice({
        }
 })
 
-export { reducer }
+// export { reducer }
 export const actionsGoods = { goodsOnBack }
 

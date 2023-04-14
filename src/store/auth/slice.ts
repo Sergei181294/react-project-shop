@@ -33,7 +33,6 @@ const slice = createSlice({
                      state.isAuth = true
                      state.login = action.payload.login
                      state.token = action.payload.token
-                     
               });
        },
 })
